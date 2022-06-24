@@ -1,0 +1,12 @@
+mysql> create database datos_empresa;
+mysql> CREATE TABLE asesores (id INT, nomcompleto VARCHAR(50), fechanacimiento DATE, 
+direccionvivienda VARCHAR(255), estrato SMALLINT, correo VARCHAR(50));
+
+CREATE TABLE clientes (idcliente INT, numobligacion BIGINT, numcelular INT, correocliente VARCHAR(50), 
+ciudadresidencia VARCHAR(50));
+
+INSERT INTO asesores (id, nomcompleto, fechanacimiento, direccionvivienda, estrato, correo) VALUES (1001116533,
+"gabriel santiago gaitan rendon", "2003-02-12", "cra 105 a #70d-50", 3, "gabrielgaitanrendon@gmail.com");
+
+INSERT INTO asesores (id, nom_completo, fecha_nacimiento, direccion_vivienda, estrato, correo) VALUES (52988227,
+"camilo espitia", "1995-05-06", "diagonal 56 # 75-5", 4, "camilo.66@gmail.com");   
