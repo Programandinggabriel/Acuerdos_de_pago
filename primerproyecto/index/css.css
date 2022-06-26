@@ -1,115 +1,96 @@
-/* CSS Document */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
-
-body {
-  background: #263c53;
-  font-size:16px;
-  line-height: 20px;
-  color: #ffffff;
-  word-wrap:break-word !important;
-  font-family: 'Open Sans', sans-serif;
-  }
-
-a {
+header {
+  height: 64px;
+  background: #000;
   color: #FFF;
+  display: flex;
+  justify-content: flex-end;
 }
 
-
-#container {
-  margin: 0 auto;
-}
-
-p {
-  text-align: center;
-}
-
-nav {
-  margin: 30px auto;
-  background-color: #4fb7f9;
-  box-shadow: 0px 3px 20px 3px #162433;
-}
-
-nav ul {
-    padding: 0;
-    margin: 0 auto;
-    list-style: none;
-    position: relative;
-    text-align: center;
-}
-  
-nav ul li {
-  display:inline-block;
-  background-color: #4fb7f9;
-  }
-
-nav a {
-  display:block;
-  padding:0 20px; 
-  color:#FFF;
-  font-size:16px;
-  line-height: 60px;
-  text-decoration:none;
-}
-
-nav a:hover { 
-  background-color: #000000; 
-}
-
-/* Hide Dropdowns by Default */
-nav ul ul {
+#btn-menu {
   display: none;
-  position: absolute; 
-  top: 60px; /* the height of the main nav */
 }
+
+header label {
+  font-size: 30px;
+  cursor: pointer;
+  display: none;
+}
+
+.menu ul {
+  background: #000;
+  display: flex;
+  list-style: none;
+}
+
+.menu ul ul {
+  display: none;
+}
+
+.menu a {
+  display: block;
+  padding: 15px 20px;
+  color: #FFF;
+  text-decoration: none;
+  line-height: 32px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+}
+
+.menu a:hover {
+  background: #2C3E50;
+}
+
+.menu a i {
+  margin-left: 10px;
+}
+
+.menu ul li:hover ul {
+  transition: all 0.3s ease;
+  display: block;
+  position: absolute;
+}
+
+@media (max-width: 768px) {
+  header label {
+    display: block;
+    padding-top: 16px;
+    padding-right: 16px;
+    transition: all 0.4s ease;
+  }
   
-/* Display Dropdowns on Hover */
-nav ul li:hover > ul {
-  display:inherit;
-}
+  .menu {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 70%;
+    transform: translateX(-100%);
+    transition: all 0.3s;
+  }
   
-/* Fisrt Tier Dropdown */
-nav ul ul li {
-  width:170px;
-  float:none;
-  display:list-item;
-  position: relative;
-}
-
-/* Second, Third and more Tiers */
-nav ul ul ul li {
-  position: relative;
-  top:-60px; 
-  left:170px;
-}
-
+  .menu ul {
+    flex-direction: column;
+    display: block;
+  }
   
-i {
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 4px;
-    margin: -7px 0 0px 7px;
-    vertical-align: middle;
-}
-
-.right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-}
-
-.left {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-}
-
-.up {
-    transform: rotate(-135deg);
-    -webkit-transform: rotate(-135deg);
-}
-
-.down {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
+  .menu ul li:hover ul {
+    display: none;
+    position: static;
+  }
+  
+  .menu a i {
+    position: absolute;
+    right: 16px;
+    line-height: 32px;
+  }
+  
+  #btn-menu:checked ~ .menu {
+    transform: translateX(0%);
+  }
 }

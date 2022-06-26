@@ -1,41 +1,35 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="index/css.css"></link>
-	<title>Inicio</title>
+  <title>INICIO</title>
+	<link href="index/css.css" rel="stylesheet">
 </head>
+
 <body>
-	<div id="container">	
-		<nav>
-			<ul>
-				<li><a href="#">Opción<i class="down"></i></a>
-					<ul>
-						<li>Cliente<a href="#"></a>
-							<ul>
-							<!--menu 1-->
-								<li><a href="formularios/clientes/formclientes.php">Inserta</a></li>
-								<li><a href="formularios/clientes/imprime_cliente.php">Editar</a></li>
-							</ul>
-						</li>
-						<li>Asesor<a href="#"></a>
-							<ul>
-								<li><a href="formularios/asesores/formasesores.php">Inserta</a></li>
-								<li><a href="formularios/asesores/imprime_asesor.php">Edita</a></li>
-							</ul>		
-						</li>
-					</ul>
-				</li>
-			</ul>
-			<!-- nueva lista 
-				<ul>
-					<li>1</li>
-						<ul>
-							<li>sub 1</li>	
-						</ul>
-				</ul>
-			-->
-		</nav>
-	</div>
+  <header>
+    <input type="checkbox" id="btn-menu"/>
+    <label for="btn-menu"><i class="fa fa-bars"></i></label>
+    <nav class="menu">
+      <ul>
+        <li><a href="#">Item 1</a></li>
+        <li class="submenu"><a href="#">Item 2 <i class="fa fa-caret-down"></i></a>
+          <ul>
+            <li><a href="#">Sub Item</a></li>
+            <li><a href="#">Sub Item</a></li>
+            <li><a href="#">Sub Item</a></li>
+            <li><a href="#">Sub Item</a></li>
+          </ul>
+        </li>
+        <li class="submenu"><a href="#">Item 3 <i class="fa fa-caret-down"></i></a>
+          <ul>
+            <li><a href="#">Sub Item</a></li>
+            <li><a href="#">Sub Item</a></li>
+            <li><a href="#">Sub Item</a></li>
+            <li><a href="#">Sub Item</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Item 4</a></li>
+      </ul>
+    </nav>
+  </header>
 </body>
 </html>
