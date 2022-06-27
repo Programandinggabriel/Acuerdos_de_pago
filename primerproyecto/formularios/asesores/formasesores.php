@@ -2,93 +2,65 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <style>
-            header{
-                width: 600px; 
-                text-align: center; 
-                margin: 30px auto;
-            }
-
             form{
                 width: 800px;
                 margin: 30px auto;
                 padding: 20px 20px;
-            }
-            label{
-                display: block;
-                padding-left: 15px;
-                text-indent: -20px;
-                text-align: left;                
-            }
-            input{
-              width: 350px;
-              height: 30px;
-              padding: 0;
-              margin: 0;
-              vertical-align: top;
-              position: relative;
-              top: -25px;
-              margin-left: 330px;
-              text-align: center;
-            }
-            #enviar{
-                padding-top: 30px;
-                width: 350px;
-                margin: 0px -150px;
-            }
-            
+            }            
         </style>
     </head>
-<body>
-    <header>DATOS DE EL ASESOR</header>
+<body style="background: #C6C1AC">
+    <h1>DATOS DE EL ASESOR</h1>
     <form method="POST" action="acciones_asesor.php">
         <!--VARIABLE DE CASE == ACCION USUARIO-->
-        <input type="hidden" name="accion" value= "insertar"></input>
-        <div>
-            <label>N° DOCUMENTO ASESOR</label>
-            <input type="text" id="inNombreAsesor" name="inNdocAsesor"></input>
-            <output id="outNombreAsesor"></output>
+        <input type="hidden" name="accion" value="insertar"></input>
+        
+        <div class="form-group row mt-3">
+            <label class="col-sm-3 col-form-label col-form-label-sm">N° DOCUMENTO ASESOR</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control bg-secondary bg-secondary" id="inNombreAsesor" name="inNdocAsesor"></input>
+            </div>    
         </div>
             
-        <div>
-            <label>NOMBRES Y APELLIDOS COMPLETOS</label>
-            <input type="text" id="inApellidoAsesor" name="inNombreAsesor"></input>
-            <output id="outApellidoAsesor"></output>
+        <div class="form-group row mt-3">
+            <label class="col-sm-3 col-form-label col-form-label-sm">NOMBRES Y APELLIDOS COMPLETOS</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control bg-secondary" id="inApellidoAsesor" name="inNombreAsesor"></input>
+            </div>
         </div>
             
-        <div>
-            <label>FECHA DE NACIMIENTO</label>
-            <input type="date" name="inFechNacAsesor"></input>
-            <output id="outFechaNacimiento"></output>
+        <div class="form-group row mt-3">
+            <label class="col-sm-3 col-form-label col-form-label-sm">FECHA DE NACIMIENTO</label>
+            <div class=col-sm-8>
+                <input type="date" class="form-control bg-secondary" name="inFechNacAsesor"></input>
+            </div>
         </div>
 
-        <div>
-            <label>DIRECCION DE VIVIENDA</label>
-            <input type="text" name="inViviendaAsesor"></input>
-            <output id="outDireccionDeVivienda"></output> 
+        <div class="form-group row mt-3">
+        <label class="col-sm-3 col-form-label col-form-label-sm">DIRECCION DE VIVIENDA</label>
+            <div class=col-sm-8>
+                <input type="text" class="form-control bg-secondary" name="inViviendaAsesor"></input> 
+            </div>
         </div>
 
-        <div>
-            <label id="estratoOut">ESTRÁTO SOCIAL</label>
-            <input type="range" id="entradaEstrato" max="7" min="1" value="1" name="inEstratoAsesor"></input>
-            <output id="outEstratoSocial"></output> 
-            
-            <script>
-                var entrada = document.getElementById('entradaEstrato');
-                var salida = document.getElementById('outEstratoSocial');
-                salida.value = entrada.value;
-                entrada.addEventListener("input",function(){
-                    salida.value = entrada.value;}, false);
-            </script>
+        <div class="form-group row mt-3">
+            <label class="col-sm-3 col-form-label col-form-label-sm">ESTRÁTO SOCIAL</label>
+            <div class="col-sm-2">
+                <input type="number" class="form-control bg-secondary" name="inEstratoAsesor"></input>
+            </div>
         </div>
             
-        <div>
-            <label>CORREO EMPRESARIAL</label>
-            <input type="email" name="inCorreoAsesor"></input>
-            <output id="outemail"></output>
+        <div class="form-group row mt-3">
+        <label class="col-sm-3 col-form-label col-form-label-sm">CORREO EMPRESARIAL</label>
+        <div class=col-sm-8>
+            <input type="email" class="form-control bg-secondary" name="inCorreoAsesor"></input>
         </div>
-        <div id="enviar">
-            <input type="submit" value= "INSERTAR"></input>
+        <div class="form-group row mt-5">
+            <div id="col-sm-4">
+                <button type="submit" class="form-control btn btn-outline-secondary text-dark"><b>INSERTAR</b></input>
+            </div>
         </div>
     </form>
 </body>

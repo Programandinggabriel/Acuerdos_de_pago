@@ -1,35 +1,33 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <title>INICIO</title>
-	<link href="index/css.css" rel="stylesheet">
-</head>
-
-<body>
-  <header>
-    <input type="checkbox" id="btn-menu"/>
-    <label for="btn-menu"><i class="fa fa-bars"></i></label>
-    <nav class="menu">
-      <ul>
-        <li><a href="#">Item 1</a></li>
-        <li class="submenu"><a href="#">Item 2 <i class="fa fa-caret-down"></i></a>
-          <ul>
-            <li><a href="#">Sub Item</a></li>
-            <li><a href="#">Sub Item</a></li>
-            <li><a href="#">Sub Item</a></li>
-            <li><a href="#">Sub Item</a></li>
-          </ul>
-        </li>
-        <li class="submenu"><a href="#">Item 3 <i class="fa fa-caret-down"></i></a>
-          <ul>
-            <li><a href="#">Sub Item</a></li>
-            <li><a href="#">Sub Item</a></li>
-            <li><a href="#">Sub Item</a></li>
-            <li><a href="#">Sub Item</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Item 4</a></li>
-      </ul>
-    </nav>
-  </header>
-</body>
+	<head>
+		<title>INICIO</title>
+    <meta charset="UTF-8">
+    <link rel="styleSheet" href="index/style_index.css">
+  </head>
+	<body>
+		<div id="header">
+			<nav> <!-- Aqui estamos iniciando la nueva etiqueta nav -->
+				<ul class="nav">
+					<!--<li><a href="">Inicio</a></li>-->
+					<li><a href="">Información</a>
+						<ul>
+							<li><a href="">Cliente</a>
+                <ul>
+                  <li><a href="formularios/clientes/imprime_cliente.php"> Edita </a></li>
+                  <li><a href="formularios/clientes/formclientes.php"> Inserta </a></li>
+                </ul>
+              </li>
+							<li><a href="">Asesor</a>
+                <ul>
+                  <li><a href="formularios/asesores/imprime_asesor.php"> Edita </a></li>
+                  <li><a href="formularios/asesores/formasesores.php"> Inserta </a></li>
+                </ul>
+              </li>
+						</ul>
+					</li>
+        </ul>
+			</nav><!-- Aqui estamos cerrando la nueva etiqueta nav -->
+		</div>
+	</body>
 </html>
