@@ -2,65 +2,57 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <style>
-            form{
-                width: 800px;
-                margin: 30px auto;
-                padding: 20px 20px;
-            }            
-        </style>
     </head>
-<body style="background: #C6C1AC">
-    <h1>DATOS DE EL ASESOR</h1>
-    <form method="POST" action="acciones_asesor.php">
+<body class="bg-body">
+    <form method="POST" action="acciones_asesor.php" style="width: 800px; margin: 30px auto; padding: 20px 20px;">
+        <h1 class='text-center'>DATOS DEL ASESOR</h1>
         <!--VARIABLE DE CASE == ACCION USUARIO-->
         <input type="hidden" name="accion" value="insertar"></input>
         
         <div class="form-group row mt-3">
-            <label class="col-sm-3 col-form-label col-form-label-sm">N° DOCUMENTO ASESOR</label>
+            <label class="col-sm-3 col-form-label col-form-label-sm">N° DOCUMENTO</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control bg-secondary bg-secondary" id="inNombreAsesor" name="inNdocAsesor"></input>
+                <input type="text" class="form-control bg-light" id="inNombreAsesor" name="inNdocAsesor" required="required"></input>
             </div>    
         </div>
             
         <div class="form-group row mt-3">
             <label class="col-sm-3 col-form-label col-form-label-sm">NOMBRES Y APELLIDOS COMPLETOS</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control bg-secondary" id="inApellidoAsesor" name="inNombreAsesor"></input>
+                <input type="text" class="form-control bg-light" id="inApellidoAsesor" name="inNombreAsesor"></input>
             </div>
         </div>
             
         <div class="form-group row mt-3">
             <label class="col-sm-3 col-form-label col-form-label-sm">FECHA DE NACIMIENTO</label>
             <div class=col-sm-8>
-                <input type="date" class="form-control bg-secondary" name="inFechNacAsesor"></input>
+                <input type="date" class="form-control bg-light" name="inFechNacAsesor"></input>
             </div>
         </div>
 
         <div class="form-group row mt-3">
         <label class="col-sm-3 col-form-label col-form-label-sm">DIRECCION DE VIVIENDA</label>
             <div class=col-sm-8>
-                <input type="text" class="form-control bg-secondary" name="inViviendaAsesor"></input> 
+                <input type="text" class="form-control bg-light" name="inViviendaAsesor"></input> 
             </div>
         </div>
 
         <div class="form-group row mt-3">
             <label class="col-sm-3 col-form-label col-form-label-sm">ESTRÁTO SOCIAL</label>
             <div class="col-sm-2">
-                <input type="number" class="form-control bg-secondary" name="inEstratoAsesor"></input>
+                <input type="number" class="form-control bg-light" max="6" min="1" name="inEstratoAsesor"></input>
             </div>
         </div>
             
         <div class="form-group row mt-3">
         <label class="col-sm-3 col-form-label col-form-label-sm">CORREO EMPRESARIAL</label>
         <div class=col-sm-8>
-            <input type="email" class="form-control bg-secondary" name="inCorreoAsesor"></input>
+            <input type="email" class="form-control bg-light" name="inCorreoAsesor"></input>
         </div>
         <div class="form-group row mt-5">
-            <div id="col-sm-4">
-                <button type="submit" class="form-control btn btn-outline-secondary text-dark"><b>INSERTAR</b></input>
-            </div>
+            <button type="submit" class="btn btn-outline-secondary text-dark w-50" style="margin-left: 26%"><b>INSERTAR</b></input>   
         </div>
     </form>
 </body>
