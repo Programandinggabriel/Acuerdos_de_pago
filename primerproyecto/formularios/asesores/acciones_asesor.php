@@ -1,6 +1,6 @@
 <?php 
     include('../../conexion/conexionbasedatos.php');
-
+    
     //variable indice para cualquier CASE  
     $inNdocAsesor = $_POST['inNdocAsesor'];
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

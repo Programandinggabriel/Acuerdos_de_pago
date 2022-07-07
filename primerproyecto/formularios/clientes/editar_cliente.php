@@ -13,97 +13,77 @@
     //CARGA FORMULARIO DEL PRINCIPIO
     ?>
     <head>
-        <style>
-            header{
-                width: 600px; 
-                text-align: center; 
-                margin: 30px auto;
-            }
-
-            form{
-                width: 800px;
-                margin: 30px auto;
-                padding: 20px 20px;
-            }
-            label{
-                display: block;
-                padding-left: 15px;
-                text-indent: -20px;
-                justify-content: center;                
-            }
-            input{
-                width: 350px;
-                height: 30px;
-                padding: 0;
-                margin: 0;
-                vertical-align: top;
-                position: relative;
-                top: -25px;
-                margin-left: 330px;
-                text-align: center;
-            }
-            
-            
-            #actualizar{
-                padding-top: 30px;
-                width: 350px;
-                margin: 0px -150px;
-            }
-            #borrar{
-                padding-top: 15px;
-                width: 350px;
-                margin: 0px -150px;
-            }
-        </style>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--responsive-->
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <script src="../../js/bootstrap.js"></script>
+        <title>Insertar</title>
     </head>
-    <header>ACTUALIZAR DATOS</header>
-    <form method="POST" action="acciones_clientes.php">
-        <!--VARIABLE DE CASE == ACCION USUARIO-->
-        <input type="hidden" name="accion" value="editar"></input>
-        
-        <div>
-            <label>NUMERO DE CÉDULA</label>
-            <input type="text" id="inCedulaClnt" name="inCedulaClnt" value="<?php echo $resultado[0]?>" 
-            readonly="readonly"></input>
-        </div>
-        
-        <div>
-            <label>NÚMERO DE OBLIGACIÓN</label>
-            <input type="text" id="inNumoblClnt" name="inNumoblClnt" value="<?php echo $resultado[1]?>"></input>
-        </div>
-        
-        <div>
-            <label>NOMBRE COMPLETO </label>
-            <input type="text" id="inNomClnt" name="inNomClnt" value="<?php echo $resultado[2]?>"></input>
-        </div>
+    <body class="bg-light">
+        <button class="btn btn-outline-success m-4 mb-0 mx-5" type='button' onclick= window.location.href='../../index.html'> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="70" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
+            </svg>
+        </button>  
+        <form method="POST" action="acciones_clientes.php" style="width: 800px; margin: 0px auto; padding: 20px 20px;">
+        <h1 class='text-center'>DATOS DEL CLIENTE</h1>
+            <!--VARIABLE DE CASE == ACCION USUARIO-->
+            <input type="hidden" name="accion" value="editar"></input>
+            
+            <div class="form-group row mt-3">
+                <label class="col-sm-3 col-form-label col-form-label-sm">NUMERO DE CÉDULA</label>
+                <div class=col-sm-8>
+                    <input class="form-control bg-light" id="inCedulaClnt" type="text" name="inCedulaClnt" value="<?php echo $resultado[0]?>" 
+                    readonly="readonly"></input>
+                </div>
+            </div>
+            
+            <div class="form-groip row mt-3">
+                <label class="col-sm-3 col-form-label col-form-label-sm">NÚMERO DE OBLIGACIÓN</label>
+                <div class=col-sm-8>
+                    <input class="form-control bg-light" type="text" id="inNumoblClnt" name="inNumoblClnt" value="<?php echo $resultado[1]?>"></input>
+                </div>
+            </div>
+            
+            <div class="form-group row mt-3">
+                <label class="col-sm-3 col-form-label" >NOMBRE COMPLETO </label>
+                <div class=col-sm-8>
+                    <input class="form-control bg-light" type="text" id="inNomClnt" name="inNomClnt" value="<?php echo $resultado[2]?>"></input>
+                </div>
+            </div>
 
-        <div>
-            <label>NUMERO DE CELULAR</label>
-            <input type="text" id="inNumCelClnt"  name="inNumCelClnt" value="<?php echo $resultado[3]?>"></input>
-        </div>
+            <div class="form-group row mt-3">
+                <label class="col-sm-3 col-form-label col-form-label-sm">NUMERO DE CELULAR</label>
+                <div class=col-sm-8>
+                    <input class="form-control bg-light" type="text" id="inNumCelClnt"  name="inNumCelClnt" value="<?php echo $resultado[3]?>"></input>
+                </div>
+            </div>
 
-        <div>
-            <label id="estratoOut">CORREO ELECTRÓNICO</label>
-            <input type="email" id="inEmailClnt" name="inEmailClnt" value="<?php echo $resultado[4]?>"></input>
-        </div>
-        
-        <div>
-            <label>CIUDAD</label>
-            <input type="text" id="inCiudadClnt" name="inCiudadClnt" value="<?php echo $resultado[5]?>"></input>
-        </div>
-        
-        <div id="actualizar">
-            <input type="submit" value="ACTUALIZAR"></input>
-        </div>
-        <div id="borrar">
-            <input type="submit" value="BORRAR" onclick="cambiaValor()"></input>
-            <script>
-                function cambiaValor(){
-                    document.getElementsByName("accion")[0].value = "eliminar";
-                }
-            </script>
-        </div>
-    </form>
+            <div class="form-group row mt-3">
+                <label class="col-sm-3 col-form-label col-form-label-sm">CORREO ELECTRÓNICO</label>
+                <div class=col-sm-8>
+                    <input  class="form-control bg-light" type="email" id="inEmailClnt" name="inEmailClnt" value="<?php echo $resultado[4]?>"></input>
+                </div>
+            </div>
+            
+            <div class="form-group row mt-3">
+                <label class="col-sm-3 col-form-label col-form-label-sm">CIUDAD</label>
+                <div class=col-sm-8>
+                    <input class="form-control bg-light" type="text" id="inCiudadClnt" name="inCiudadClnt" value="<?php echo $resultado[5]?>"></input>
+                </div>
+            </div> 
+            <div class="form-group row mt-5">
+                <input class="btn btn-outline-secondary text-dark" style="margin-left: 15%; width: 200px" value="ACTUALIZAR" type="submit"></input>
+                <input class="btn btn-outline-secondary text-dark" style="margin-left: 15%; width: 200px" value="BORRAR" type="submit" onclick="cambiaValor()"></input>
+                <script>
+                    function cambiaValor(){
+                        document.getElementsByName("accion")[0].value = "eliminar";
+                    }
+                </script>
+            </div>
+        </form>
+    </body>
     <?php 
 
 ?>  

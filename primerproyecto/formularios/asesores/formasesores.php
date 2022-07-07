@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../../css/bootstrap.min.css" rel="stylesheet">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--responsive-->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../js/bootstrap.js"></script>
+    <title>Insertar</title>
+</head>
 <body class="bg-body">
     <form method="POST" action="acciones_asesor.php" style="width: 800px; margin: 30px auto; padding: 20px 20px;">
         <h1 class='text-center'>DATOS DEL ASESOR</h1>
@@ -14,14 +17,14 @@
         <div class="form-group row mt-3">
             <label class="col-sm-3 col-form-label col-form-label-sm">N° DOCUMENTO</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control bg-light" id="inNombreAsesor" name="inNdocAsesor" required="required"></input>
+                <input type="text" class="form-control bg-light" name="inNdocAsesor" required="required"></input>
             </div>    
         </div>
             
         <div class="form-group row mt-3">
             <label class="col-sm-3 col-form-label col-form-label-sm">NOMBRES Y APELLIDOS COMPLETOS</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control bg-light" id="inApellidoAsesor" name="inNombreAsesor"></input>
+                <input type="text" class="form-control bg-light" name="inNombreAsesor"></input>
             </div>
         </div>
             
