@@ -1,7 +1,7 @@
 <?php
 
 $nombreServidor = "localhost";
-$baseDatos = "datos_empresa";
+$baseDatos = "datos_acuerdos";
 $nombreUs = "root";
 $contraseña = "";
 

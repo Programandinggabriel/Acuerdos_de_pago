@@ -14,19 +14,19 @@
 
     switch($_POST['accion']){
         case 'insertar':
-            $inNumoblClnt = $_POST['inNumoblClnt'];
             $inNomClnt = $_POST['inNomClnt'];
+            $inEdadClnt = $_POST['inEdadClnt'];
+            $inCiudadClnt = $_POST['inCiudadClnt'];
             $inNumCelClnt = $_POST['inNumCelClnt']; 
             $inEmailClnt = $_POST['inEmailClnt'];
-            $inCiudadClnt = $_POST['inCiudadClnt'];
+            $inNumoblClnt = $_POST['inNumoblClnt'];
             
-            $datosCliente = "('$inCedulaClnt','$inNumoblClnt', '$inNomClnt', '$inNumCelClnt', '$inEmailClnt', 
-            '$inCiudadClnt')";
+            $datosCliente = "('$inCedulaClnt','$inNomClnt','$inEdadClnt', '$inCiudadClnt', '$inNumCelClnt','$inEmailClnt','$inNumoblClnt')";
             
             //echo $datosCliente
 
             $queryInsert = "INSERT INTO 
-            clientes (idcliente, numobligacion, nombrecliente, numcelular, correocliente, ciudadresidencia) 
+            clientes (idcliente, nombrecliente, edad, ciudadresidencia, numcelular, correocliente, numobligacion) 
             VALUES $datosCliente";
             
             //echo $queryInsert;
@@ -39,15 +39,16 @@
 
             
         case 'editar':
-            $inNumoblClnt = $_POST['inNumoblClnt'];
             $inNomClnt = $_POST['inNomClnt'];
+            $inEdadClnt = $_POST['inEdadClnt'];
+            $inCiudadClnt = $_POST['inCiudadClnt'];
             $inNumCelClnt = $_POST['inNumCelClnt']; 
             $inEmailClnt = $_POST['inEmailClnt'];
-            $inCiudadClnt = $_POST['inCiudadClnt'];
+            $inNumoblClnt = $_POST['inNumoblClnt'];
 
             //"idcliente='$inCedulaClnt' = la llave primaria no se envia 
-            $datosCliente = "numobligacion='$inNumoblClnt', nombrecliente='$inNomClnt', 
-            numcelular='$inNumCelClnt', correocliente='$inEmailClnt', ciudadresidencia='$inCiudadClnt'";
+            $datosCliente = "nombrecliente='$inNomClnt', edad='$inEdadClnt', 
+            ciudadresidencia='$inCiudadClnt', numcelular='$inNumCelClnt', correocliente='$inEmailClnt', numobligacion='$inNumoblClnt'";
 
             $queryUpdate = "UPDATE clientes SET ". $datosCliente ." WHERE idcliente = " . "'" . $inCedulaClnt ."'";
 
@@ -65,7 +66,7 @@
     ?>
     <script type="text/javascript">
         // redirige para mostrar la accion realizada en cualquiera de los casos
-        window.location.href = "imprime_cliente.php";
+        window.location.href = "muestra_cliente.php";
     </script>  
 <?php
 

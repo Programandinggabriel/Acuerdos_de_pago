@@ -25,9 +25,10 @@
         echo"<th>Numero de documento</th>";
         echo"<th>Nombre completo</th>";
         echo"<th>Fecha de nacimiento</th>";
+        echo"<th>Edad</th>";
+        echo"<th>Correo asesor</th>";
         echo"<th>Direccion de vivienda</th>";
         echo"<th>Estrato</th>";
-        echo"<th>Correo asesor</th>";
 
         echo"<th>Editar</th>";
         while($respuesta = mysqli_fetch_array($consulta)){
@@ -38,6 +39,7 @@
                 echo "<td>". $respuesta[3] ."</td>";
                 echo "<td>". $respuesta[4] ."</td>";
                 echo "<td>". $respuesta[5] ."</td>";
+                echo "<td>". $respuesta[6] ."</td>";
                 echo "<td><button type='button' class='btn btn-outline-success' 
                     onclick= window.location.href='edita_asesor.php?idasesor=$respuesta[0]'>
                     <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-arrow-down-square-fill' viewBox='0 0 16 16'>

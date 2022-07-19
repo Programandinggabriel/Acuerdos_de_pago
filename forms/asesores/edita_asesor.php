@@ -47,24 +47,33 @@
         </div>
 
         <div class="form-group row mt-3">
-        <label class="col-sm-3 col-form-label col-form-label-sm">DIRECCION DE VIVIENDA</label>
-            <div class=col-sm-8>
-                <input type="text" class="form-control bg-light" name="inViviendaAsesor" value="<?php echo $resultado[3]?>"></input> 
+            <label class="col-sm-3 col-form-label col-form-label-sm"> EDAD </label>
+            <div class="col-sm-2">
+                <input type="number" class="form-control bg-light" name="inEdadAsesor" value="<?php echo $resultado[3]?>"></input>
             </div>
         </div>
 
         <div class="form-group row mt-3">
+            <label class="col-sm-3 col-form-label col-form-label-sm">CORREO EMPRESARIAL</label>
+            <div class=col-sm-8>
+                <input type="email" class="form-control bg-light" name="inCorreoAsesor" value="<?php echo $resultado[4]?>"></input>
+        </div>
+
+        <div class="form-group row mt-3">
+            <label class="col-sm-3 col-form-label col-form-label-sm">CORREO EMPRESARIAL</label>
+            <div class=col-sm-8>
+            <input type="address" class="form-control bg-light" name="inViviendaAsesor" value="<?php echo $resultado[5]?>"></input>
+        </div>
+        
+        <div class="form-group row mt-3">
             <label class="col-sm-3 col-form-label col-form-label-sm">ESTRÁTO SOCIAL</label>
             <div class="col-sm-2">
-                <input type="number" class="form-control bg-light" max="6" min="1" name="inEstratoAsesor" value="<?php echo $resultado[4]?>"></input>
+                <input type="number" class="form-control bg-light" max="6" min="1" name="inEstratoAsesor" value="<?php echo $resultado[6]?>"></input>
             </div>
         </div>
             
-        <div class="form-group row mt-3">
-        <label class="col-sm-3 col-form-label col-form-label-sm">CORREO EMPRESARIAL</label>
-        <div class=col-sm-8>
-            <input type="email" class="form-control bg-light" name="inCorreoAsesor" value="<?php echo $resultado[5]?>"></input>
-        </div>
+        
+
         <div class="form-group row mt-5">
             <button type="submit" class="btn btn-outline-secondary text-dark" style="margin-left: 15%; width: 200px"><b> ACTUALIZAR </b></input>
             <button type="submit" class="btn btn-outline-secondary text-dark " style="margin-left: 15%; width: 200px" onclick="cambiaValor()"><b> ELIMINAR </b></button> 

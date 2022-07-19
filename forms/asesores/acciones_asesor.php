@@ -9,9 +9,11 @@
         case 'insertar':
             $inNombreAsesor = $_POST['inNombreAsesor'];
             $inFechNacAsesor = $_POST['inFechNacAsesor'];
+            $inEdadAsesor = $_POST['inEdadAsesor']
+            $inCorreoAsesor = $_POST['inCorreoAsesor'];
             $inViviendaAsesor = $_POST['inViviendaAsesor'];
             $inEstratoAsesor = $_POST['inEstratoAsesor'];
-            $inCorreoAsesor = $_POST['inCorreoAsesor'];
+            
             
             $datosAsesor = "('$inNdocAsesor','$inNombreAsesor', '$inFechNacAsesor', '$inViviendaAsesor', '$inEstratoAsesor'
             , '$inCorreoAsesor')";
@@ -26,9 +28,10 @@
         case 'editar':
             $inNombreAsesor = $_POST['inNombreAsesor'];
             $inFechNacAsesor = $_POST['inFechNacAsesor'];
+            $inEdadAsesor = $_POST['inEdadAsesor']
+            $inCorreoAsesor = $_POST['inCorreoAsesor'];
             $inViviendaAsesor = $_POST['inViviendaAsesor'];
             $inEstratoAsesor = $_POST['inEstratoAsesor'];
-            $inCorreoAsesor = $_POST['inCorreoAsesor'];
          
              $datosAsesor = "nomcompleto='$inNombreAsesor', fechanacimiento='$inFechNacAsesor', 
              direccionvivienda='$inViviendaAsesor', estrato='$inEstratoAsesor' , correoasesor='$inCorreoAsesor'";
