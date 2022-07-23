@@ -1,6 +1,6 @@
 <?php 
     //objeto base de datos, propiedad conexion
-    include ('../../conexion/conexionbasedatos.php');
+    include('../../conexion/con_database.php');
     
     // aqui imprimo para saber si las variables llegaron por el POST
     /*echo i"<br>".$_POST['incedulaClnt']; 
@@ -9,48 +9,60 @@
     */
 
     //se usa para cualquier ACCION DE CLIENTES !!!!!!
-    $inCedulaClnt = $_POST['inCedulaClnt'];
+    $inNumobligClnt = $_POST['inNumobligClnt'];
     //!!!!!!
 
     switch($_POST['accion']){
         case 'insertar':
+            
+            //validacion previa
+            $querySelect = 'SELECT numobligacion FROM clientes_deuda WHERE numobligacion =' . "'". $inNumobligClnt . "'";
+            $resultado = mysqli_query($conexion, $querySelect);
+            
+            if($resultado){
+                echo 
+                "<script> 
+                    window.alert('registro ya existente');
+                    window.history.back();
+                </script>";
+                exit();
+            }
+            //
+            $inCedulaClnt = $_POST['inCedulaClnt'];
             $inNomClnt = $_POST['inNomClnt'];
             $inEdadClnt = $_POST['inEdadClnt'];
             $inCiudadClnt = $_POST['inCiudadClnt'];
             $inNumCelClnt = $_POST['inNumCelClnt']; 
             $inEmailClnt = $_POST['inEmailClnt'];
-            $inNumoblClnt = $_POST['inNumoblClnt'];
+            $inSaldoCap = $_POST['inSaldoCap'];
             
-            $datosCliente = "('$inCedulaClnt','$inNomClnt','$inEdadClnt', '$inCiudadClnt', '$inNumCelClnt','$inEmailClnt','$inNumoblClnt')";
+            $datosCliente = "('$inNumobligClnt', '$inCedulaClnt','$inNomClnt','$inEdadClnt', '$inCiudadClnt', 
+            '$inNumCelClnt','$inEmailClnt','$inSaldoCap')";
             
             //echo $datosCliente
 
             $queryInsert = "INSERT INTO 
-            clientes (idcliente, nombrecliente, edad, ciudadresidencia, numcelular, correocliente, numobligacion) 
+            clientes_deuda (numobligacion, idcliente, nombrecliente, edad, ciudadresidencia, numcelular, correocliente, saldocapital) 
             VALUES $datosCliente";
             
             //echo $queryInsert;
-
-            // como manipular el objeto error para saber que tipo de error resta devolviendo mysqli
-            if($resultado = mysqli_query($conexion, $queryInsert)){
-                //metodo imprime cliente
-            }
             break;
 
             
         case 'editar':
+            $inCedulaClnt = $_POST['inCedulaClnt'];
             $inNomClnt = $_POST['inNomClnt'];
             $inEdadClnt = $_POST['inEdadClnt'];
             $inCiudadClnt = $_POST['inCiudadClnt'];
             $inNumCelClnt = $_POST['inNumCelClnt']; 
             $inEmailClnt = $_POST['inEmailClnt'];
-            $inNumoblClnt = $_POST['inNumoblClnt'];
+            $inSaldoCap = $_POST['inSaldoCap'];
 
             //"idcliente='$inCedulaClnt' = la llave primaria no se envia 
-            $datosCliente = "nombrecliente='$inNomClnt', edad='$inEdadClnt', 
-            ciudadresidencia='$inCiudadClnt', numcelular='$inNumCelClnt', correocliente='$inEmailClnt', numobligacion='$inNumoblClnt'";
+            $datosCliente = "numobligacion='$inNumobligClnt', idcliente='$inCedulaClnt, nombrecliente='$inNomClnt', edad='$inEdadClnt', 
+            ciudadresidencia='$inCiudadClnt', numcelular='$inNumCelClnt', correocliente='$inEmailClnt', saldocapital='$inSaldoCap'";
 
-            $queryUpdate = "UPDATE clientes SET ". $datosCliente ." WHERE idcliente = " . "'" . $inCedulaClnt ."'";
+            $queryUpdate = "UPDATE clientes_deuda SET ". $datosCliente ." WHERE numobligacion = " . "'" . $inNumobligClnt ."'";
 
             //echo $queryInsert;
             $actualizados = mysqli_query($conexion, $queryUpdate);
@@ -58,17 +70,9 @@
                 header('location: imprime_cliente.php');
             break;
         case 'eliminar':
-            $queryDelete = "DELETE FROM clientes WHERE idcliente = " . "'" . $inCedulaClnt ."'";
+            $queryDelete = "DELETE FROM clientes_deuda WHERE numobligacion = " . "'" . $inNumobligClnt ."'";
             $eliminado = mysqli_query($conexion, $queryDelete);
             break;
     } 
-
-    ?>
-    <script type="text/javascript">
-        // redirige para mostrar la accion realizada en cualquiera de los casos
-        window.location.href = "muestra_cliente.php";
-    </script>  
-<?php
-
-
-?>
+        header("location: muestra_cliente.php");
+    ?> 
