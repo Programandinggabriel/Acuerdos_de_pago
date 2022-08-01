@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--responsive-->
-    <link href="../../css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../js/bootstrap.js"></script>
-    <title>Insertar</title>
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../../js/bootstrap.js"></script>
+    <title>Nuevo asesor</title>
 </head>
-<body class="bg-light p-2 row justify-content-center">
+<body class="bg-light p-5 row justify-content-center">
     <form class="border border-success rounded w-75 p-3" method="POST" action="acciones_asesor.php">
         <h1 class='text-center'>DATOS DEL ASESOR</h1>
         <!--VARIABLE DE CASE == ACCION USUARIO-->
         <input type="hidden" name="accion" value='insertar'>   
             <div class='text-center'>
                 <div class="form-group row mt-3 justify-content-center">
-                    <label class="col-sm-3 col-form-label-lg">N° DOCUMENTO</label>
+                    <label class="col-sm-3 col-form-label-lg">NÚMERO DE DOCUMENTO</label>
                     <div class="col-sm-4">
-                        <input  class="form-control bg-light" type="text" required name="inNdocAsesor"></input>
+                        <input  class="form-control bg-light" type="number" min="1" step="any" required name="inNdocAsesor"></input>
                     </div>    
                 </div>
                     
@@ -37,7 +37,7 @@
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg"> EDAD </label>
                     <div class="col-sm-4">
-                        <input class="form-control bg-light" type="number" name="inEdadAsesor"></input>
+                        <input class="form-control bg-light" type="number" min="18" step="any" name="inEdadAsesor"></input>
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg">ESTRÁTO SOCIAL</label>
                     <div class="col-sm-4">
-                        <input class="form-control bg-light" type="number" max="6" min="1" name="inEstratoAsesor"></input>
+                        <input class="form-control bg-light" type="number" min="1" max="6" name="inEstratoAsesor"></input>
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@
     </form>
     <script>
         document.getElementById('retroceso').addEventListener('click', retroceder, false);
-        function retroceder(){window.location.href='../../index.html'};
+            function retroceder(){window.location.href='../../../index.html'};
     </script>
 </body>
 </html>

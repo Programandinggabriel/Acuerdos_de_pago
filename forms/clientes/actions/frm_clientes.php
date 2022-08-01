@@ -2,11 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <script src="../../js/bootstrap.js"></script> 
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <script src="../../../js/bootstrap.js"></script>
         <title> INSERTAR </title>
     </head>
-<body class="bg-light p-2 row justify-content-center">
+<body class="bg-light p-5 row justify-content-center">
 <form class="border border-success rounded p-5 w-75" method="POST" action="acciones_clientes.php" > 
     <h1 class='text-center'>DATOS DEL CLIENTE</h1>    
     <!--VARIABLE DE CASE == ACCION USUARIO-->
@@ -16,14 +16,14 @@
             <div class="form-group row mt-3 justify-content-center">
                 <label class="col-sm-3 col-form-label-lg">NUMERO DE OBLIGACIÓN</label>
                 <div class=col-sm-4>
-                    <input class="form-control bg-light" type="text" required name="inNumobligClnt"></input>
+                    <input class="form-control bg-light" type="number" min="1" step="any" required name="inNumobligClnt"></input>
                 </div>
             </div>           
 
             <div class="form-group row mt-3 justify-content-center">
-                <label class="col-sm-3 col-form-label-lg">NUMERO DE CÉDULA</label>
+                <label class="col-sm-3 col-form-label-lg">NÚMERO DE IDENTIFICACIÓN</label>
                 <div class=col-sm-4>
-                    <input class="form-control bg-light" type="text" required name="inCedulaClnt"></input>
+                    <input class="form-control bg-light" type="number" min="1" step="any" required name="inCedulaClnt"></input>
                 </div>
             </div>
             
@@ -37,7 +37,7 @@
             <div class="form-group row mt-3 justify-content-center">
                 <label class="col-sm-3 col-form-label-lg" > EDAD </label>
                 <div class=col-sm-4>
-                    <input class="form-control bg-light" type="number" name="inEdadClnt"></input>
+                    <input class="form-control bg-light" type="number" min="18" step="any" name="inEdadClnt"></input>
                 </div>
             </div>
 
@@ -51,7 +51,7 @@
             <div class="form-group row mt-3 justify-content-center">
                 <label class="col-sm-3 col-form-label-lg">NUMERO DE CELULAR</label>
                 <div class=col-sm-4>
-                    <input class="form-control bg-light" type="text" name="inNumCelClnt"></input>
+                    <input class="form-control bg-light" type="number" min="1" step="any" name="inNumCelClnt"></input>
                 </div>
             </div>
 
@@ -65,7 +65,7 @@
             <div class="form-groip row mt-3 justify-content-center">
                 <label class="col-sm-3 col-form-label-lg">SALDO CAPITAL</label>
                 <div class=col-sm-4>
-                    <input class="form-control bg-light" type="number" required name="inSaldoCap"></input>
+                    <input class="form-control bg-light" type="number" min="1" step="any" required name="inSaldoCap"></input>
                 </div>
             </div>
         </div>
@@ -106,7 +106,7 @@
         
     <script>
         document.getElementById('retroceso').addEventListener('click', retroceder, false);
-        function retroceder(){window.location.href='../../index.html'};
+            function retroceder(){window.location.href='../../../index.html'};
     </script>
 </body>
 </html>

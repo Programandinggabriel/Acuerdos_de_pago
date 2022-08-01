@@ -12,7 +12,7 @@
             $querySelect = 'SELECT idasesor FROM asesores WHERE idasesor='. "'". $inNdocAsesor . "'";
             $resultado = mysqli_query($conexion, $querySelect);
             
-            if($resultado){
+            if(mysqli_num_rows($resultado) >= 1){
                 echo 
                 "<script> 
                     window.alert('registro ya existente');
@@ -34,7 +34,7 @@
             , '$inCorreoAsesor')";
             $queryInsert = "INSERT INTO asesores VALUES ". $datosAsesor;
 
-            $resultado = mysqli_query($conexion, $queryInsert);
+            $queryInsert = mysqli_query($conexion, $queryInsert);
 
             break;
         case 'editar':
@@ -51,15 +51,15 @@
              
              $queryUpdate = "UPDATE asesores SET ". $datosAsesor. " WHERE idasesor = '" .$inNdocAsesor."'";
              
-             $resultado = mysqli_query($conexion, $queryUpdate);
+             $queryUpdate = mysqli_query($conexion, $queryUpdate);
              if($resultado){
              }
             break;
         case 'eliminar':
             $queryDelete = "DELETE FROM asesores WHERE idasesor = " . "'" . $inNdocAsesor ."'";
-            $eliminado = mysqli_query($conexion, $queryDelete);
+            $queryDelete = mysqli_query($conexion, $queryDelete);
             break;
     }
-    //header("location: muestra_asesor.php"); 
+    header("location: muestra_asesor.php"); 
 
 ?>

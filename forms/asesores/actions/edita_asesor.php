@@ -1,5 +1,5 @@
 <?php
-    include('../../conexion/con_database.php');
+    include('../../../conexion/con_database.php');
 
     $idasesor = $_GET['idasesor'];
     $querySelect = "SELECT * FROM asesores WHERE idasesor = '" .$idasesor. "'";
@@ -13,8 +13,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--responsive-->
-    <link href="../../css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../js/bootstrap.js"></script>
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../../js/bootstrap.js"></script>
     <title>Editar</title>
 </head>
 <body class="bg-light p-2 row justify-content-center"> 
@@ -109,7 +109,7 @@
     </form>
     <script>
         document.getElementById('retroceso').addEventListener('click', retroceder, false);
-            function retroceder(){window.location.href='../../index.html'};
+            function retroceder(){window.location.href='../../../index.html'};
     
         document.getElementById('eliminar').addEventListener('click', cambiaValor,false);
             function cambiaValor(){document.getElementsByName("accion")[0].value = "eliminar"};

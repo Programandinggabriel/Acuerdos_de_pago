@@ -1,6 +1,6 @@
 <?php 
     //objeto base de datos, propiedad conexion
-    include('../../conexion/con_database.php');
+    include('../../../conexion/con_database.php');
     
     // aqui imprimo para saber si las variables llegaron por el POST
     /*echo i"<br>".$_POST['incedulaClnt']; 
@@ -18,8 +18,8 @@
             //validacion previa
             $querySelect = 'SELECT numobligacion FROM clientes_deuda WHERE numobligacion =' . "'". $inNumobligClnt . "'";
             $resultado = mysqli_query($conexion, $querySelect);
-            
-            if($resultado){
+
+            if(mysqli_num_rows($resultado) >= 1){
                 echo 
                 "<script> 
                     window.alert('registro ya existente');
@@ -45,10 +45,9 @@
             clientes_deuda (numobligacion, idcliente, nombrecliente, edad, ciudadresidencia, numcelular, correocliente, saldocapital) 
             VALUES $datosCliente";
             
-            //echo $queryInsert;
+            $queryInsert = mysqli_query($conexion, $queryInsert);
             break;
-
-            
+        
         case 'editar':
             $inCedulaClnt = $_POST['inCedulaClnt'];
             $inNomClnt = $_POST['inNomClnt'];
@@ -63,16 +62,13 @@
             ciudadresidencia='$inCiudadClnt', numcelular='$inNumCelClnt', correocliente='$inEmailClnt', saldocapital='$inSaldoCap'";
 
             $queryUpdate = "UPDATE clientes_deuda SET ". $datosCliente ." WHERE numobligacion = " . "'" . $inNumobligClnt ."'";
-
-            //echo $queryInsert;
+            echo $queryInsert;
             $actualizados = mysqli_query($conexion, $queryUpdate);
-            if($actualizados)
-                header('location: imprime_cliente.php');
             break;
         case 'eliminar':
             $queryDelete = "DELETE FROM clientes_deuda WHERE numobligacion = " . "'" . $inNumobligClnt ."'";
             $eliminado = mysqli_query($conexion, $queryDelete);
             break;
     } 
-        header("location: muestra_cliente.php");
+        header('location: ../views/muestra_cliente.php');
     ?> 
