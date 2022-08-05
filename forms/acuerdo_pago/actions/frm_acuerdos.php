@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--responsive-->
     <link href="../../../css/bootstrap.min.css" rel="stylesheet">
     <script src="../../../js/bootstrap.js"></script>
+    
+
     <title>Nuevo acuerdo</title>
 </head>
 <section class="bg-light p-5 row justify-content-center">
-    <form class="border border-success rounded w-75 p-3" Method='POST'action=''>
+    <form class="border border-success rounded w-75 p-3" Method='POST' action='' name='insert_acrd'>
     <h1 class='text-center'>DATOS DEL ACUERDO</h1>
         <!--VARIABLE DE CASE == ACCION USUARIO-->
         <input type="hidden" name="accion" value='insertar'>   
@@ -21,7 +23,7 @@
                         <input  class="form-control bg-light" type="number" min="1" step="any" id ="inidCliente" name="inidCliente"></input>
                     </div>
                     <div class="col-1">
-                    <button  class="btn btn-outline-primary" id="btn_muestra_Oblig" type="button">
+                    <button  class="btn btn-outline-primary" id="btn_muestra_oblig" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" width="70" height="30" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                         </svg>
@@ -34,20 +36,20 @@
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg">NUMERO DE OBLIGACIÓN</label>
                     <div class="col-sm-4">
-                        <input  class="form-control bg-light" type="number" min="1" step="any" required name="inNobligAcuerdo"></input>
+                        <input  class="form-control bg-light" type="number" min="1" step="any" id="inNobligAcuerdo" name="inNobligAcuerdo" required></input>
                     </div>    
                 </div>
 
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg">VALOR CAPITAL </label>
                     <div class=col-sm-4>
-                        <input class="form-control bg-light" type="number" min="1" step="any" name="inValorAcuerdo"></input>
+                        <input class="form-control bg-light" type="number" min="1" step="any" id="inValorAcuerdo" name="inValorAcuerdo"></input>
                 </div>
 
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg">FECHA ACUERDO</label>
                     <div class=col-sm-4>
-                        <input class="form-control bg-light" type="date" name="inFechAcuerdo"></input>
+                        <input class="form-control bg-light" type="date" id="inFechAcuerdo" name="inFechAcuerdo"></input>
                     </div>
                 </div>
                 <div class="form-group row mt-3 justify-content-center">
@@ -107,21 +109,24 @@
                 </div>
             </div>
     </form>
-    <script>
-        document.getElementById('retroceso').addEventListener('click', retroceder, false);
-            function retroceder(){window.location.href='../../../index.html'};
-
-        document.getElementById('btn_muestra_Oblig').addEventListener('click',window_emerg, false);
-            /*function() 
-            {window_emerg('../views/muestra_oblig.php')}
-            */
-            function window_emerg(){
-                var idCliente = document.getElementById('inidCliente').value;
-                window.location.href='../views/muestra_oblig.php?idCliente=' + idCliente.toString();
-                window.open(url, 'vent_obligs', 'menubar=yes,top=0,width=0,height=400,resizable=no,scrollbars=no'); 
-            };
-
-        
-    </script>
+    <script src="../js/frm_acuerdos.js"></script>
 </section>
 </html>
+
+<?php 
+    //validacion de llegada de variables al seleccionar obligacion
+    if(isset($_GET['inidCliente']) && isset($_GET['inNobligAcuerdo']) && isset($_GET['inValorAcuerdo'])){
+        echo "<script>;
+                with(document){
+                    getElementById('inidCliente').value=".$_GET['inidCliente']."
+                    getElementById('inNobligAcuerdo').value=".$_GET['inNobligAcuerdo']."
+                    getElementById('inValorAcuerdo').value=".$_GET['inValorAcuerdo']."
+                } 
+                //window.location = './frm_acuerdos.php';
+                /*window.location.hash='no-back-button';
+                window.location.hash='Again-No-back-button';*/
+            </script>"; 
+
+    }
+    
+?>
