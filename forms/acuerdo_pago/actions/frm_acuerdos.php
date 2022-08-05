@@ -122,9 +122,8 @@
                     getElementById('inNobligAcuerdo').value=".$_GET['inNobligAcuerdo']."
                     getElementById('inValorAcuerdo').value=".$_GET['inValorAcuerdo']."
                 } 
-                //window.location = './frm_acuerdos.php';
-                /*window.location.hash='no-back-button';
-                window.location.hash='Again-No-back-button';*/
+                //restablece la url quita variables get
+                window.history.pushState({}, document.title, '/' + 'project_acuerdos_de_pago/forms/acuerdo_pago/actions/frm_acuerdos.php');
             </script>"; 
 
     }
