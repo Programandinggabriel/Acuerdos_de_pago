@@ -104,9 +104,6 @@
         </div>
     </form>
         
-    <script>
-        document.getElementById('retroceso').addEventListener('click', retroceder, false);
-            function retroceder(){window.location.href='../../../index.html'};
-    </script>
+    <script src='../js/frm_clientes.js'></script>
 </body>
 </html>

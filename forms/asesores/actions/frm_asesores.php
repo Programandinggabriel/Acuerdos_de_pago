@@ -94,9 +94,6 @@
                 </div>
             </div>
     </form>
-    <script>
-        document.getElementById('retroceso').addEventListener('click', retroceder, false);
-            function retroceder(){window.location.href='../../../index.html'};
-    </script>
+    <script src='../js/frm_asesores.js'></script>
 </body>
 </html>

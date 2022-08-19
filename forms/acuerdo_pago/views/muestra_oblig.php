@@ -86,13 +86,15 @@
             echo "<th> Numero obligación </th>";
             echo "<th> Numero documento </th>";
             echo "<th> Saldo capital </th>";
+            echo "<th> Saldo total </th>";
+
             while($arrObligs =  mysqli_fetch_array($querySelect)){
                 echo "<tr>";
 
                 echo "<td class='justify-content-center w-1'>
                         <button type='button' class='btn btn-outline-primary' 
                             onclick=window.location.href='../actions/frm_acuerdos.php?inidCliente=".$arrObligs[1].
-                            "&inNobligAcuerdo=".$arrObligs[0]."&inValorAcuerdo=".$arrObligs[7]."'>
+                            "&inNobligAcuerdo=".$arrObligs[0]."&inValCapital=".$arrObligs[7]."&inValTotal=".$arrObligs[8]."'>
 
                         <svg xmlns='http://www.w3.org/2000/svg' width='100' height='16' fill='currentColor' class='bi bi-cash-coin' viewBox='0 0 16 16'>
                             <path fill-rule='evenodd' d='M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z'/>
@@ -106,6 +108,8 @@
                 echo "<td>" . $arrObligs[0] . "</td>";
                 echo "<td>" . $arrObligs[1] . "</td>";
                 echo "<td>" . $arrObligs[7] . "</td>";
+                echo "<td>" . $arrObligs[8] . "</td>";
+
                 echo "</tr>";
 
     };
@@ -116,13 +120,12 @@
                         //alerta
                         swal({  icon: 'error',
                                 title: 'Sin resultados',
-                                text: 'no se encontraron obligaciones',
+                                text: 'No se encontraron obligaciones para " .$_GET['idCliente']. "',
                                 button: 'Regresar',
                           })
                           .then((btn_val) => {
                             window.history.back();
-                          })
-                          ;
+                          });
                       </script>"
                 ;
             }
