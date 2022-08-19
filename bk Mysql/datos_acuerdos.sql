@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 23-07-2022 a las 04:40:19
+-- Tiempo de generación: 19-08-2022 a las 19:41:08
 -- Versión del servidor: 5.7.33
 -- Versión de PHP: 7.4.19
 
@@ -28,23 +28,29 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `acuerdos` (
-  `idacuerdo` int(11) NOT NULL COMMENT 'auto incremento',
+  `idacuerdo` int(3) NOT NULL COMMENT 'auto incremento IDENTIFICA ACUERDO DE PAGO',
   `numobligacion` bigint(20) NOT NULL COMMENT 'numero de obligacion por la cual se realiza acuerdo',
-  `idcliente` int(10) UNSIGNED NOT NULL COMMENT 'id de cliente que realiza el acuerdo',
+  `idcliente` varchar(11) COLLATE utf8_unicode_ci NOT NULL COMMENT 'id de cliente que realiza el acuerdo',
   `fechaacuerdo` date NOT NULL COMMENT 'fecha en la cual se realiza el acuerdo de pago',
   `fechapago` date NOT NULL COMMENT 'fecha en la cual tendra que pagar',
   `valor` int(11) NOT NULL COMMENT 'valor por el cual se realiza el acuerdo',
-  `cuotas` tinyint(255) NOT NULL COMMENT 'numero de cuotas a diferir el pago',
-  `tipo` varchar(10) COLLATE utf8_unicode_ci GENERATED ALWAYS AS (if((`cuotas` = 1),'CONTADO','CUOTAS')) VIRTUAL COMMENT 'modalidad, de contado o a cuotas'
+  `cuotas` tinyint(2) NOT NULL COMMENT 'numero de cuotas a diferir el pago',
+  `tipo` varchar(10) COLLATE utf8_unicode_ci GENERATED ALWAYS AS (if((`cuotas` = 1),'CONTADO','CUOTAS')) VIRTUAL COMMENT 'modalidad, de contado o a cuotas',
+  `comentarios` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'comentarios de el acuerdo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `acuerdos`
 --
 
-INSERT INTO `acuerdos` (`idacuerdo`, `numobligacion`, `idcliente`, `fechaacuerdo`, `fechapago`, `valor`, `cuotas`) VALUES
-(1, 318800010056468626, 0, '2022-02-10', '2022-05-13', 700000, 1),
-(2, 318800010058458922, 0, '2022-05-10', '2022-05-12', 78888484, 5);
+INSERT INTO `acuerdos` (`idacuerdo`, `numobligacion`, `idcliente`, `fechaacuerdo`, `fechapago`, `valor`, `cuotas`, `comentarios`) VALUES
+(1, 990909090, '10001116533', '2022-08-18', '2022-08-25', 54165161, 2, 'edite este acuerdo'),
+(20, 990909090, '10001116533', '2022-08-18', '2022-08-20', 8000000, 1, 'ACUERD O1'),
+(21, 990909090, '10001116533', '2022-08-18', '2022-08-20', 150000, 1, 'ACUERD O2'),
+(22, 990909090, '10001116533', '2022-08-18', '2022-08-20', 90000000, 1, 'ACUERD O3'),
+(23, 990909090, '10001116533', '2022-08-18', '2022-08-20', 70000000, 1, 'ACUERD O3'),
+(24, 990909090, '10001116533', '2022-08-18', '2022-08-20', 900000000, 5, 'ACUERD O3'),
+(25, 990909090, '10001116533', '2022-08-18', '2022-08-20', 9000000, 3, 'ACUERD O5');
 
 -- --------------------------------------------------------
 
@@ -85,16 +91,21 @@ CREATE TABLE `clientes_deuda` (
   `ciudadresidencia` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'ciudad de donde reside el cliente',
   `numcelular` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'numero de celular de cliente',
   `correocliente` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'correo de cliente ',
-  `saldocapital` int(11) NOT NULL COMMENT 'el 50% de este valor, sera el max a cobrar'
+  `saldocapital` int(11) NOT NULL COMMENT 'el 50% de este valor, sera el min a cobrar',
+  `saltototal` int(11) NOT NULL COMMENT 'este valor será el mayor a cobrar'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `clientes_deuda`
 --
 
-INSERT INTO `clientes_deuda` (`numobligacion`, `idcliente`, `nombrecliente`, `edad`, `ciudadresidencia`, `numcelular`, `correocliente`, `saldocapital`) VALUES
-(64354345, '10001116533', 'gabriel gaitan', 3, 'bogota', '3104518752', 'gabrielgaitanrendon@gmail.com', 9000000),
-(9000009990, '10001116533', 'gabriel gaitan', 3, 'bogota', '3104518752', 'gabrielgaitanrendon@gmail.com', 90000000);
+INSERT INTO `clientes_deuda` (`numobligacion`, `idcliente`, `nombrecliente`, `edad`, `ciudadresidencia`, `numcelular`, `correocliente`, `saldocapital`, `saltototal`) VALUES
+(64354345, '10001116533', 'gabriel gaitan', 3, 'bogota', '3104518752', 'gabrielgaitanrendon@gmail.com', 9000000, 100000000),
+(87080470, '5151111', 'fsadsad', 44, 'iuhihiuh', '651650160', 'gabrielgaitanrendon@gmail.com', 500000, 100000000),
+(848484148, '5151111', 'fsadsad', 44, 'iuhihiuh', '651650160', 'gabrielgaitanrendon@gmail.com', 700000, 100000000),
+(990909090, '10001116533', 'gabriel gaitan', 30, 'bogota', '3104518752', 'gabrielgaitanrendon@gmail.com', 750000, 100000000),
+(9000009990, '10001116533', 'gabriel gaitan', 3, 'bogota', '3104518752', 'gabrielgaitanrendon@gmail.com', 90000000, 100000000),
+(285284854514, '5151111', 'fsadsad', 44, 'iuhihiuh', '651650160', 'gabrielgaitanrendon@gmail.com', 800000, 100000000);
 
 -- --------------------------------------------------------
 
@@ -137,6 +148,12 @@ ALTER TABLE `pagos`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `acuerdos`
+--
+ALTER TABLE `acuerdos`
+  MODIFY `idacuerdo` int(3) NOT NULL AUTO_INCREMENT COMMENT 'auto incremento IDENTIFICA ACUERDO DE PAGO', AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `pagos`
