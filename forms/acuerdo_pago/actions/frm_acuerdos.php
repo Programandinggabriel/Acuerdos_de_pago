@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--responsive-->
     <link href="../../../css/bootstrap.min.css" rel="stylesheet">
     <script src="../../../js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
     
 
     <title>Nuevo acuerdo</title>
 </head>
 <section class="bg-light p-5 row justify-content-center">
-    <form class="border border-success rounded w-75 p-3" Method='POST' action='' name='insert_acrd'>
-    <h1 class='text-center'>DATOS DEL ACUERDO</h1>
+    <form class="border border-success rounded w-75 p-3" method='POST' action="acciones_acuerdos.php" id='frm_acuedos'>
+    <h1 class='text-center'>DATOS DE EL ACUERDO</h1>
         <!--VARIABLE DE CASE == ACCION USUARIO-->
         <input type="hidden" name="accion" value='insertar'>   
             <div class='text-center'>
@@ -20,7 +22,7 @@
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg">NUMERO IDENTIFICACIÓN (CLIENTE)</label>
                     <div class="col-sm-3">
-                        <input  class="form-control bg-light" type="number" min="1" step="any" id ="inidCliente" name="inidCliente"></input>
+                        <input  class="form-control bg-light" type="number" min="1" step="any" name="inidCliente" id ="inidCliente"></input>
                     </div>
                     <div class="col-1">
                     <button  class="btn btn-outline-primary" id="btn_muestra_oblig" type="button">
@@ -36,46 +38,60 @@
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg">NUMERO DE OBLIGACIÓN</label>
                     <div class="col-sm-4">
-                        <input  class="form-control bg-light" type="number" min="1" step="any" id="inNobligAcuerdo" name="inNobligAcuerdo" required></input>
+                        <input  class="form-control bg-light" type="number"  step="any" id="inNobligAcuerdo" name="inNobligAcuerdo" readonly required></input>
                     </div>    
                 </div>
 
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg">VALOR CAPITAL </label>
                     <div class=col-sm-4>
-                        <input class="form-control bg-light" type="number" min="1" step="any" id="inValorAcuerdo" name="inValorAcuerdo"></input>
+                        <input class="form-control bg-light" type="number" step="any" id="inValCapital" name="inValCapital" readonly required></input>
+                </div>
+
+                <div class="form-group row mt-3 justify-content-center">
+                    <label class="col-sm-3 col-form-label-lg">VALOR TOTAL </label>
+                    <div class=col-sm-4>
+                        <input class="form-control bg-light" type="number" step="any" id="inValTotal" name="inValTotal" readonly required></input>
+                </div>
+
+                <div class="form-group row mt-3 justify-content-center">
+                    <label class="col-sm-3 col-form-label-lg">VALOR ACORDADO </label>
+                    <div class=col-sm-4>
+                        <input class="form-control bg-light" type="number" step="any" id="inValorAcuerdo" name="inValorAcuerdo" required></input>
                 </div>
 
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg">FECHA ACUERDO</label>
                     <div class=col-sm-4>
-                        <input class="form-control bg-light" type="date" id="inFechAcuerdo" name="inFechAcuerdo"></input>
+                      <input class="form-control bg-light" type="date"  name="inFechAcuerdo" id='datePicker' readonly>
+                    </input>
+                                        
                     </div>
                 </div>
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg"> FECHA DE PAGO </label>
                     <div class="col-sm-4">
-                        <input class="form-control bg-light" type="date" name="inFechPago"></input>
+                        <input class="form-control bg-light" type="date" name="inFechPago" required></input>
                     </div>
                 </div>
 
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg"> CUOTAS </label>
                     <div class=col-sm-4>
-                    <input class="form-control bg-light" type="number" min="1" step="any" name="inViviendaAsesor"></input>
+                        <input class="form-control bg-light" type="number" min="1" step="any" name="inCuotas" id="inCuotas" required></input>
                 </div>
-                
+               
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg"> TIPO </label>
                     <div class="col-sm-4">
-                        <input class="form-control bg-light" type="text" readonly name="inTipoAcuerdo"></input>
+                        <input class="form-control bg-light" type="text" name="inTipoAcuerdo" id="inTipoAcuerdo" readonly></input>
                     </div>
                 </div>
 
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg"> COMENTARIOS (OPCIONAL) </label>
                     <div class="col-sm-4">
-                        <textarea class="form-control bg-light" type="text" autocomplete='on' rows='5' name="inComments"></textarea>
+                        <textarea class="form-control bg-light" type="text" placeholder='ejemplo: en el mes de abril pagara 2 cuotas,...' autocomplete='on' rows='5' name="inComments"></textarea>
                     </div>
                 </div>
             
@@ -108,19 +124,20 @@
                 </div> 
                 </div>
             </div>
+        <script src='../js/frm_acuerdos.js'></script>
     </form>
-    <script src="../js/frm_acuerdos.js"></script>
 </section>
 </html>
 
 <?php 
     //validacion de llegada de variables al seleccionar obligacion
-    if(isset($_GET['inidCliente']) && isset($_GET['inNobligAcuerdo']) && isset($_GET['inValorAcuerdo'])){
+    if(isset($_GET['inidCliente']) && isset($_GET['inNobligAcuerdo']) && isset($_GET['inValCapital']) && isset($_GET['inValTotal'])){
         echo "<script>;
                 with(document){
                     getElementById('inidCliente').value=".$_GET['inidCliente']."
                     getElementById('inNobligAcuerdo').value=".$_GET['inNobligAcuerdo']."
-                    getElementById('inValorAcuerdo').value=".$_GET['inValorAcuerdo']."
+                    getElementById('inValCapital').value=".$_GET['inValCapital']."
+                    getElementById('inValTotal').value=".$_GET['inValTotal']."
                 } 
                 //restablece la url quita variables get
                 window.history.pushState({}, document.title, '/' + 'project_acuerdos_de_pago/forms/acuerdo_pago/actions/frm_acuerdos.php');
