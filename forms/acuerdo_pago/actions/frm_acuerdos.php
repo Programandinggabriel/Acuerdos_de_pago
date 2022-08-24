@@ -9,32 +9,30 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
     
+    
 
     <title>Nuevo acuerdo</title>
 </head>
 <section class="bg-light p-5 row justify-content-center">
     <form class="border border-success rounded w-75 p-3" method='POST' action="acciones_acuerdos.php" id='frm_acuedos'>
-    <h1 class='text-center'>DATOS DE EL ACUERDO</h1>
+    <h1 class='text-center mb-5'>DATOS DE EL ACUERDO</h1>
         <!--VARIABLE DE CASE == ACCION USUARIO-->
         <input type="hidden" name="accion" value='insertar'>   
             <div class='text-center'>
-            <div class="container">
                 <div class="form-group row mt-3 justify-content-center">
-                    <label class="col-sm-3 col-form-label-lg">NUMERO IDENTIFICACIÓN (CLIENTE)</label>
+                    <label class="col-sm-3 col-form-label-md">NUMERO IDENTIFICACIÓN (CLIENTE)</label>
                     <div class="col-sm-3">
                         <input  class="form-control bg-light" type="number" min="1" step="any" name="inidCliente" id ="inidCliente"></input>
                     </div>
-                    <div class="col-1">
-                    <button  class="btn btn-outline-primary" id="btn_muestra_oblig" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="30" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <div class="col-sm-1">
+                    <button  class="btn btn-outline-primary" id="btn_oblig" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="65" height="30" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                         </svg>
                     </button>  
                 </div>
                 </div>
-           
-            </div>
-
+            
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg">NUMERO DE OBLIGACIÓN</label>
                     <div class="col-sm-4">
@@ -46,41 +44,54 @@
                     <label class="col-sm-3 col-form-label-lg">VALOR CAPITAL </label>
                     <div class=col-sm-4>
                         <input class="form-control bg-light" type="number" step="any" id="inValCapital" name="inValCapital" readonly required></input>
+                    </div>
                 </div>
 
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg">VALOR TOTAL </label>
                     <div class=col-sm-4>
                         <input class="form-control bg-light" type="number" step="any" id="inValTotal" name="inValTotal" readonly required></input>
+                    </div>
                 </div>
 
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg">VALOR ACORDADO </label>
                     <div class=col-sm-4>
                         <input class="form-control bg-light" type="number" step="any" id="inValorAcuerdo" name="inValorAcuerdo" required></input>
+                    </div>
+                </div>
+
+                <div class="form-group row mt-3 justify-content-center">
+                    <label class="col-sm-3 col-form-label-lg">CUOTAS</label>
+                    <div class="col-sm-3">
+                        <input  class="form-control bg-light" type="number" min="1" step="any" name="inCuotas" id ="inCuotas" required readonly></input>
+                    </div>
+                    <div class="col-sm-1">
+                    <button  class="btn btn-outline-info" type="button" id="btn_cuotas">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="65" height="30" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/>
+                            <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"/>
+                            <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z"/>
+                            <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"/>
+                        </svg>
+                    </button>  
+                    </div>
                 </div>
 
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg">FECHA ACUERDO</label>
                     <div class=col-sm-4>
-                      <input class="form-control bg-light" type="date"  name="inFechAcuerdo" id='datePicker' readonly>
-                    </input>
-                                        
+                      <input class="form-control bg-light" type="date"  name="inFechAcuerdo" id='inFechAcuerdo' readonly></input>                
                     </div>
                 </div>
+                
                 <div class="form-group row mt-3 justify-content-center">
-                    <label class="col-sm-3 col-form-label-lg"> FECHA DE PAGO </label>
+                    <label class="col-sm-3 col-form-label-lg"> FECHA DE PAGO (CUOTAS) </label>
                     <div class="col-sm-4">
-                        <input class="form-control bg-light" type="date" name="inFechPago" required></input>
+                        <input class="form-control bg-light" type="date" name="inFechPago" id='inFechPago' required></input>
                     </div>
                 </div>
-
-                <div class="form-group row mt-3 justify-content-center">
-                    <label class="col-sm-3 col-form-label-lg"> CUOTAS </label>
-                    <div class=col-sm-4>
-                        <input class="form-control bg-light" type="number" min="1" step="any" name="inCuotas" id="inCuotas" required></input>
-                </div>
-               
+                
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg"> TIPO </label>
                     <div class="col-sm-4">
@@ -91,10 +102,9 @@
                 <div class="form-group row mt-3 justify-content-center">
                     <label class="col-sm-3 col-form-label-lg"> COMENTARIOS (OPCIONAL) </label>
                     <div class="col-sm-4">
-                        <textarea class="form-control bg-light" type="text" placeholder='ejemplo: en el mes de abril pagara 2 cuotas,...' autocomplete='on' rows='5' name="inComments"></textarea>
+                        <textarea class="form-control bg-light" type="text" placeholder='ejemplo: en el mes de abril pagara 2 cuotas,...' autocomplete='on' rows='5' name="inComments" id="inComments"></textarea>
                     </div>
                 </div>
-            
             </div>
 
         
@@ -132,17 +142,25 @@
 <?php 
     //validacion de llegada de variables al seleccionar obligacion
     if(isset($_GET['inidCliente']) && isset($_GET['inNobligAcuerdo']) && isset($_GET['inValCapital']) && isset($_GET['inValTotal'])){
-        echo "<script>;
-                with(document){
+        echo "<script>";
+               echo"with(document){
                     getElementById('inidCliente').value=".$_GET['inidCliente']."
                     getElementById('inNobligAcuerdo').value=".$_GET['inNobligAcuerdo']."
                     getElementById('inValCapital').value=".$_GET['inValCapital']."
                     getElementById('inValTotal').value=".$_GET['inValTotal']."
-                } 
-                //restablece la url quita variables get
-                window.history.pushState({}, document.title, '/' + 'project_acuerdos_de_pago/forms/acuerdo_pago/actions/frm_acuerdos.php');
-            </script>"; 
+                }";
+        echo"</script>"; 
+    };
 
-    }
+    if(isset($_GET['inCuotas'])){
+        echo"<script>"; 
+            echo "document.getElementById('inCuotas').value=" . $_GET['inCuotas'].";";
+            echo "$('#inCuotas').trigger('change');";
+        echo"</script>"; 
+    };
+    /*
+    echo"//limpia la url quita variables get
+    window.history.pushState({}, document.title, '/' + 'project_acuerdos_de_pago/forms/acuerdo_pago/actions/frm_acuerdos.php');";
+    */
     
 ?>
