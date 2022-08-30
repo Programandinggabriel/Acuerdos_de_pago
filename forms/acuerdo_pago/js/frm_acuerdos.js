@@ -1,31 +1,5 @@
 window.addEventListener('load',cargDatFrm());
-//pregunta antes de enviar el formulario
-document.getElementById('frm_acuedos').addEventListener('submit', confirma, false);
-    function confirma (evesub){
-        var ValPagar = parseInt(document.getElementById('inValorAcuerdo').value);
-        var formulario = document.getElementById("frm_acuedos");
 
-        evesub.preventDefault(); //cancela acción por defecto de el evento submit
-        if(ValPagar != 0){
-            swal({
-                title: "¿confirma guardar el acuedo?",
-                text: "Se generara el acuerdo de pago por un valor de " + ValPagar,
-                icon: "warning",
-                buttons: true,
-            })
-            .then((guardar) => {
-                if (guardar) {
-                    formulario.submit();
-                    $("input[id!=inFechAcuerdo]").val("");
-                    $("textarea").val("");
-                    return true;
-                } else {
-                    window.alert('!No se guardo el acuerdo¡'); 
-                    return false;
-                };
-            });
-        };
-    };
 
 //añade function a evento para mostrar obligaciones para la cedula ingresada de el cliente 'x'
 document.getElementById('btn_oblig').addEventListener('click', verObl, false); 
@@ -40,6 +14,7 @@ document.getElementById('btn_oblig').addEventListener('click', verObl, false);
             //window.history.pushState({}, document.title, `/project_acuerdos_de_pago/forms/acuerdo_pago/views/muestra_oblig.php`);
         };   
     };
+
 
 //valida el valor ingresado a pagar sea correcto
 document.getElementById('inValorAcuerdo').addEventListener('change', ValidaPago, false);
@@ -112,13 +87,44 @@ document.getElementById('btn_cuotas').addEventListener('click', verCuota, false)
         };
     };
 
-
 //añade function a evento de boton retroceso para enviar a el index
 document.getElementById('retroceso').addEventListener('click', retroceder, false);
     function retroceder(){
         window.location.href='../../../index.html';
     };
 
+//añade function a evento de boton limpiar
+document.getElementById('limpiar').addEventListener('click', limpiar, false);
+    function limpiar(){
+        limpiafrm();
+    };
+
+//pregunta antes de enviar el formulario
+document.getElementById('frm_acuedos').addEventListener('submit', confirma, false);
+    function confirma (evesub){
+        var ValPagar = parseInt(document.getElementById('inValorAcuerdo').value);
+        var formulario = document.getElementById("frm_acuedos");
+
+        evesub.preventDefault(); //cancela acción por defecto de el evento submit
+        if(ValPagar != 0){
+            swal({
+                title: "¿confirma guardar el acuedo?",
+                text: "Se generara el acuerdo de pago por un valor de " + ValPagar,
+                icon: "warning",
+                buttons: true,
+            })
+            .then((guardar) => {
+                if (guardar) {
+                    formulario.submit();
+                    limpiafrm();
+                    return true;
+                } else {
+                    window.alert('!No se guardo el acuerdo¡'); 
+                    return false;
+                };
+            });
+        };
+    };
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -148,4 +154,20 @@ function cargDatFrm(){
         $('#inTipoAcuerdo').val(getItem('inTipoAcuerdo'));
         $('#inComments').val(getItem('inComments'));
     };
+};
+
+function limpiafrm(){
+    $("input[id!=inFechAcuerdo]").val("");
+    $("textarea").val("");
+    sessionStorage.clear();
+}
+
+//formatea num a pesos
+function formatoCop(valor){
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0
+    });
+    return formatter.format(valor);  
 };

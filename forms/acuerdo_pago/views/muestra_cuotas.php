@@ -1,4 +1,9 @@
-<?php include('../../../conexion/con_database.php')?>
+<?php 
+
+include('../../../conexion/con_database.php');
+$meses = array("Enero","Febrero", "Marzo", "Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,13 +18,9 @@
 <section class="bg-light row justify-content-center">
     <?php
     
-    //$querySelect = "SELECT * FROM clientes_deuda WHERE idcliente = '".$_GET['idCliente']."'";
-    //$querySelect = mysqli_query($conexion, $querySelect);
-
-    //if(mysqli_num_rows($querySelect) >= 1){
-        
-        //$arrObligs = mysqli_fetch_row($querySelect);
-        //print_r($arrObligs);
+    $querySum= "SELECT SUM(valor) FROM acuerdos WHERE MONTH(fechaacuerdo) =". intval(date('m')) ;
+    $querySum = mysqli_query($conexion, $querySum);
+    $querySum = mysqli_fetch_row($querySum);
         echo "<div class='p-2 w-50'>
                 <div class='border border-success rounded' id='container'>
                     <div class='p-3'>
@@ -27,17 +28,17 @@
                     <table class='my-4'>
                         <tr>
                             <td>    
-                                <label> <b> Suma de acuerdos en el mes de ".date("mmmm").": </b><label>
+                                <label> <b> Suma de acuerdos en el mes de ". $meses[intval(date("m"))-1] .": </b><label>
                             </td>
-                            
-                            <td>" 
-                                . 'suma acuerdos '."
+                            <td> 
+                                <strong>" . '$' . number_format($querySum[0],0) . "</strong>
                             </td>     
                         </tr>    
                     </table>
                     </div>
                     </div>
-                </div>" ;
+                </div>";
+        
         echo "<table class='table table-striped mt-5 text-center'>";
             echo "<th> Acción </th>";
             echo "<th> Valor acordado </th>";
@@ -55,9 +56,9 @@
                             Tomar alternativa
                         </button>
                     </td>";
-                    echo "<td>". $_GET['inValorAcuerdo'] ."</td>";
+                    echo "<td> $ ". number_format(intval($_GET['inValorAcuerdo']),0) ."</td>";
                     echo "<td>". $i ."</td>";
-                    echo "<td>". intval(intval($_GET['inValorAcuerdo']) / $i) ."</td>";
+                    echo "<td> $ ".  number_format(intval(intval($_GET['inValorAcuerdo']) / $i),0) ."</td>";
                 echo "</tr>";
             };
             echo "</table>";

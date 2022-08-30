@@ -5,11 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--responsive-->
     <link href="../../../css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../../js/bootstrap.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
-    
-    
+    <script src="../../../js/bootstrap.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
 
     <title>Nuevo acuerdo</title>
 </head>
@@ -131,6 +128,15 @@
                         </button>
                     </div>
 
+                    <div class="col-3">
+                        <button class="btn btn-outline-primary" type="button" id='limpiar' > 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
+                                <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5zm-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2zM0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5z"/>
+                            </svg>
+                            <b> Limpiar </b>
+                        </button>
+                    </div>
+
                 </div> 
                 </div>
             </div>
@@ -144,10 +150,10 @@
     if(isset($_GET['inidCliente']) && isset($_GET['inNobligAcuerdo']) && isset($_GET['inValCapital']) && isset($_GET['inValTotal'])){
         echo "<script>";
                echo"with(document){
-                    getElementById('inidCliente').value=".$_GET['inidCliente']."
-                    getElementById('inNobligAcuerdo').value=".$_GET['inNobligAcuerdo']."
-                    getElementById('inValCapital').value=".$_GET['inValCapital']."
-                    getElementById('inValTotal').value=".$_GET['inValTotal']."
+                    getElementById('inidCliente').value= ".$_GET['inidCliente'].";
+                    getElementById('inNobligAcuerdo').value=".$_GET['inNobligAcuerdo'].";
+                    getElementById('inValCapital').value= ".$_GET['inValCapital'].";
+                    getElementById('inValTotal').value= ".$_GET['inValTotal'].";
                 }";
         echo"</script>"; 
     };
