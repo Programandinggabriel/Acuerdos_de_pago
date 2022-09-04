@@ -7,7 +7,7 @@
     $inidCliente = $_POST['inidCliente'];
     $inFechAcuerdo = $_POST['inFechAcuerdo'];
     $inFechPago = $_POST['inFechPago'];
-    $inValorAcuerdo = $_POST['inValorAcuerdo'];
+    $inValorAcuerdo = (int) filter_var($_POST['inValorAcuerdo'], FILTER_SANITIZE_NUMBER_INT);
 
     $inCuotas = $_POST['inCuotas'];
     //$inTipoAcuerdo = $_POST['inTipoAcuerdo'];
@@ -49,11 +49,8 @@
             fechaacuerdo= '$inFechAcuerdo', fechapago= '$inFechPago', valor= '$inValorAcuerdo', cuotas= '$inCuotas', comentarios= '$inComments' 
             WHERE idacuerdo= '$idAcuerdo'";
 
-            print($queryUpdate);
-
             $queryUpdate = mysqli_query($conexion, $queryUpdate);
-
-            echo $queryUpdate;
+            
             if($queryUpdate){
                 echo 'actualizado';
                 header("location:../views/muestra_acuerdos.php");
