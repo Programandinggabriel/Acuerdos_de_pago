@@ -2,7 +2,7 @@
     include('../../../conexion/con_database.php');
     
     $numOblUpdate = $_GET['inNumobligClnt'];
-    $querySelect = "SELECT * FROM clientes_deuda WHERE numobligacion LIKE '" .$numOblUpdate ."'";
+    $querySelect = "SELECT * FROM infclient WHERE numobligacion LIKE '" .$numOblUpdate ."'";
     $respuesta = mysqli_query($conexion,  $querySelect);
     
     $resultado = mysqli_fetch_array($respuesta);

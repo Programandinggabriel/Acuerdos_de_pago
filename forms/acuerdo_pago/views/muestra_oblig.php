@@ -13,18 +13,18 @@
     <title> Obligaciones de <?php echo $_GET['idCliente']?></title>
 </head>
 
-<section class="bg-light row justify-content-center">
+<section class="row justify-content-center p-5">
     <?php
     //tabla
-    $querySelect = "SELECT * FROM clientes_deuda WHERE idcliente = '".$_GET['idCliente']."'";
+    $querySelect = "SELECT * FROM infclient WHERE idcliente = '".$_GET['idCliente']."'";
     $querySelect = mysqli_query($conexion, $querySelect);
 
     if(mysqli_num_rows($querySelect) >= 1){
         
         $arrObligs = mysqli_fetch_row($querySelect);
         //print_r($arrObligs);
-        echo "<div class='p-2 w-50'>
-                <div class='border border-success rounded' id='container'>
+        echo "<div class='p-2 w-75'>
+                <div class='border border-success rounded'>
                     <div class='p-3'>
                     <div class='container row'> 
                     <table class='my-4'>
@@ -107,8 +107,8 @@
                     </td>";
                 echo "<td>" . $arrObligs[0] . "</td>";
                 echo "<td>" . $arrObligs[1] . "</td>";
-                echo "<td>" . $arrObligs[7] . "</td>";
-                echo "<td>" . $arrObligs[8] . "</td>";
+                echo "<td> $ " . number_format($arrObligs[7],0,'','.') . "</td>";
+                echo "<td> $ " . number_format($arrObligs[8],0,'','.') . "</td>";
 
                 echo "</tr>";
 

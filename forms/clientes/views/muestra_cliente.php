@@ -17,7 +17,7 @@
             <?php
                 include('../../../conexion/con_database.php');
                 
-                $query_select = "SELECT * FROM clientes_deuda";
+                $query_select = "SELECT * FROM infclient";
                 $consulta = mysqli_query($conexion, $query_select);
 
                 

@@ -11,7 +11,7 @@
 <body class='bg-light'>
 
 <div class='p-2'>
-    <div class='border border-success rounded'>
+    <div class='border border-success rounded text-center' style='height: 500px; overflow: auto;'>
         <div class="p-3">
             <!--tabla-->
             <?php

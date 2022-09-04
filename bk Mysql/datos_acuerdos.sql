@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 19-08-2022 a las 19:41:08
+-- Tiempo de generación: 04-09-2022 a las 01:28:22
 -- Versión del servidor: 5.7.33
 -- Versión de PHP: 7.4.19
 
@@ -20,6 +20,24 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `datos_acuerdos`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `acuerddel`
+--
+
+CREATE TABLE `acuerddel` (
+  `idacuerdo` int(3) NOT NULL COMMENT 'auto incremento IDENTIFICA ACUERDO DE PAGO',
+  `numobligacion` bigint(20) NOT NULL COMMENT 'numero de obligacion por la cual se realiza acuerdo',
+  `idcliente` varchar(11) COLLATE utf8_unicode_ci NOT NULL COMMENT 'id de cliente que realiza el acuerdo',
+  `fechaacuerdo` date NOT NULL COMMENT 'fecha en la cual se realiza el acuerdo de pago',
+  `fechapago` date NOT NULL COMMENT 'fecha en la cual tendra que pagar',
+  `valor` int(11) NOT NULL COMMENT 'valor por el cual se realiza el acuerdo',
+  `cuotas` tinyint(2) NOT NULL COMMENT 'numero de cuotas a diferir el pago',
+  `tipo` varchar(10) COLLATE utf8_unicode_ci GENERATED ALWAYS AS (if((`cuotas` = 1),'CONTADO','CUOTAS')) VIRTUAL COMMENT 'modalidad, de contado o a cuotas',
+  `comentarios` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'comentarios de el acuerdo'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -44,13 +62,19 @@ CREATE TABLE `acuerdos` (
 --
 
 INSERT INTO `acuerdos` (`idacuerdo`, `numobligacion`, `idcliente`, `fechaacuerdo`, `fechapago`, `valor`, `cuotas`, `comentarios`) VALUES
-(1, 990909090, '10001116533', '2022-08-18', '2022-08-25', 54165161, 2, 'edite este acuerdo'),
+(1, 990909090, '10001116533', '2022-08-18', '2022-08-25', 54165161, 2, 'edite este acuerdo                '),
 (20, 990909090, '10001116533', '2022-08-18', '2022-08-20', 8000000, 1, 'ACUERD O1'),
-(21, 990909090, '10001116533', '2022-08-18', '2022-08-20', 150000, 1, 'ACUERD O2'),
+(21, 990909090, '10001116533', '2022-08-18', '2022-08-20', 150000, 1, 'boton actualizar 45454'),
 (22, 990909090, '10001116533', '2022-08-18', '2022-08-20', 90000000, 1, 'ACUERD O3'),
 (23, 990909090, '10001116533', '2022-08-18', '2022-08-20', 70000000, 1, 'ACUERD O3'),
 (24, 990909090, '10001116533', '2022-08-18', '2022-08-20', 900000000, 5, 'ACUERD O3'),
-(25, 990909090, '10001116533', '2022-08-18', '2022-08-20', 9000000, 3, 'ACUERD O5');
+(25, 990909090, '10001116533', '2022-08-18', '2022-08-20', 9000000, 3, 'ACUERD O5'),
+(30, 285284854514, '200', '2022-08-20', '2022-08-27', 500000, 2, 'klmkmlko'),
+(39, 285284854514, '200', '2022-08-20', '2022-08-25', 50000, 2, 'comenzamos a hacer el boton de cuotas'),
+(41, 990909090, '100', '2022-08-22', '2022-08-26', 900000, 2, 'hol'),
+(42, 285284854514, '200', '2022-08-22', '2022-08-31', 8000000, 2, 'dsdsad'),
+(43, 848484148, '200', '2022-08-24', '2022-08-24', 4000000, 5, 'gagagag'),
+(44, 848484148, '200', '2022-08-30', '2022-08-30', 40000000, 6, 'cambios de hoy');
 
 -- --------------------------------------------------------
 
@@ -80,10 +104,10 @@ INSERT INTO `asesores` (`idasesor`, `nomcompleto`, `fechanacimiento`, `edad`, `c
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clientes_deuda`
+-- Estructura de tabla para la tabla `infclient`
 --
 
-CREATE TABLE `clientes_deuda` (
+CREATE TABLE `infclient` (
   `numobligacion` bigint(20) NOT NULL COMMENT 'numero de obligación a pagar de cliente',
   `idcliente` varchar(11) COLLATE utf8_unicode_ci NOT NULL COMMENT 'numero de identificacion de cliente con deuda',
   `nombrecliente` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'nombre de el cliente',
@@ -96,16 +120,16 @@ CREATE TABLE `clientes_deuda` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `clientes_deuda`
+-- Volcado de datos para la tabla `infclient`
 --
 
-INSERT INTO `clientes_deuda` (`numobligacion`, `idcliente`, `nombrecliente`, `edad`, `ciudadresidencia`, `numcelular`, `correocliente`, `saldocapital`, `saltototal`) VALUES
-(64354345, '10001116533', 'gabriel gaitan', 3, 'bogota', '3104518752', 'gabrielgaitanrendon@gmail.com', 9000000, 100000000),
-(87080470, '5151111', 'fsadsad', 44, 'iuhihiuh', '651650160', 'gabrielgaitanrendon@gmail.com', 500000, 100000000),
-(848484148, '5151111', 'fsadsad', 44, 'iuhihiuh', '651650160', 'gabrielgaitanrendon@gmail.com', 700000, 100000000),
-(990909090, '10001116533', 'gabriel gaitan', 30, 'bogota', '3104518752', 'gabrielgaitanrendon@gmail.com', 750000, 100000000),
-(9000009990, '10001116533', 'gabriel gaitan', 3, 'bogota', '3104518752', 'gabrielgaitanrendon@gmail.com', 90000000, 100000000),
-(285284854514, '5151111', 'fsadsad', 44, 'iuhihiuh', '651650160', 'gabrielgaitanrendon@gmail.com', 800000, 100000000);
+INSERT INTO `infclient` (`numobligacion`, `idcliente`, `nombrecliente`, `edad`, `ciudadresidencia`, `numcelular`, `correocliente`, `saldocapital`, `saltototal`) VALUES
+(64354345, '100', 'gabriel gaitan', 3, 'bogota', '3104518752', 'gabrielgaitanrendon@gmail.com', 9000000, 100000000),
+(87080470, '200', 'fsadsad', 44, 'iuhihiuh', '651650160', 'gabrielgaitanrendon@gmail.com', 500000, 100000000),
+(848484148, '200', 'fsadsad', 44, 'iuhihiuh', '651650160', 'gabrielgaitanrendon@gmail.com', 700000, 100000000),
+(990909090, '100', 'gabriel gaitan', 30, 'bogota', '3104518752', 'gabrielgaitanrendon@gmail.com', 750000, 100000000),
+(9000009990, '100', 'gabriel gaitan', 3, 'bogota', '3104518752', 'gabrielgaitanrendon@gmail.com', 90000000, 100000000),
+(285284854514, '200', 'fsadsad', 44, 'iuhihiuh', '651650160', 'gabrielgaitanrendon@gmail.com', 800000, 100000000);
 
 -- --------------------------------------------------------
 
@@ -122,6 +146,12 @@ CREATE TABLE `pagos` (
 --
 
 --
+-- Indices de la tabla `acuerddel`
+--
+ALTER TABLE `acuerddel`
+  ADD PRIMARY KEY (`idacuerdo`);
+
+--
 -- Indices de la tabla `acuerdos`
 --
 ALTER TABLE `acuerdos`
@@ -134,9 +164,9 @@ ALTER TABLE `asesores`
   ADD PRIMARY KEY (`idasesor`);
 
 --
--- Indices de la tabla `clientes_deuda`
+-- Indices de la tabla `infclient`
 --
-ALTER TABLE `clientes_deuda`
+ALTER TABLE `infclient`
   ADD PRIMARY KEY (`numobligacion`);
 
 --
@@ -150,10 +180,16 @@ ALTER TABLE `pagos`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `acuerddel`
+--
+ALTER TABLE `acuerddel`
+  MODIFY `idacuerdo` int(3) NOT NULL AUTO_INCREMENT COMMENT 'auto incremento IDENTIFICA ACUERDO DE PAGO';
+
+--
 -- AUTO_INCREMENT de la tabla `acuerdos`
 --
 ALTER TABLE `acuerdos`
-  MODIFY `idacuerdo` int(3) NOT NULL AUTO_INCREMENT COMMENT 'auto incremento IDENTIFICA ACUERDO DE PAGO', AUTO_INCREMENT=26;
+  MODIFY `idacuerdo` int(3) NOT NULL AUTO_INCREMENT COMMENT 'auto incremento IDENTIFICA ACUERDO DE PAGO', AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `pagos`

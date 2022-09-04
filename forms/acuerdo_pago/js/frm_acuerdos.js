@@ -1,5 +1,9 @@
-window.addEventListener('load',cargDatFrm());
+$('#inValorAcuerdo').mask("000.000.000.000.000", {reverse: true});
+$('input').attr("required", "true");
+window.addEventListener('load',cargDatFrm(),false);
 
+/*--------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------*/
 
 //añade function a evento para mostrar obligaciones para la cedula ingresada de el cliente 'x'
 document.getElementById('btn_oblig').addEventListener('click', verObl, false); 
@@ -9,9 +13,7 @@ document.getElementById('btn_oblig').addEventListener('click', verObl, false);
 
         if (! idCliente == ''){
             var url='../views/muestra_oblig.php?idCliente=' + idCliente.toString();
-            
             window.location=url;
-            //window.history.pushState({}, document.title, `/project_acuerdos_de_pago/forms/acuerdo_pago/views/muestra_oblig.php`);
         };   
     };
 
@@ -19,18 +21,21 @@ document.getElementById('btn_oblig').addEventListener('click', verObl, false);
 //valida el valor ingresado a pagar sea correcto
 document.getElementById('inValorAcuerdo').addEventListener('change', ValidaPago, false);
     function ValidaPago(){
-        var ValCap = parseInt(document.getElementById('inValCapital').value);
-        var ValPagoMax = parseInt(document.getElementById('inValTotal').value);
+        // /[.]/g = caracteres a la izq y der toda la cadena, busca el '.' y reemplaza
+        var ValCap = parseInt((document.getElementById('inValCapital').value).replace(/[.]/g,''));
+        var ValPagoMax = parseInt((document.getElementById('inValTotal').value).replace(/[.]/g,''));
         
         if(ValCap != 0 && ValPagoMax != 0){
-            var ValPagar = parseInt(document.getElementById('inValorAcuerdo').value);
+            var ValPagar = parseInt((document.getElementById('inValorAcuerdo').value).replace(/[.]/g,''));
             var ValPagoMin = ValCap * 0.5;
 
+            //console.log(ValCap, ValPagoMax, ValPagar, ValPagoMin);
             if ((ValPagar < ValPagoMin) || (ValPagar > ValPagoMax)){
                 swal({  icon: 'error',
-                    title: 'El valor a pagar no cumple con las políticas',
-                    text: 'Se introdujo el valor de ($' + ValPagar + '), recuerde que el valor mínimo deberia ser ' + 
-                    'de ' + ValPagoMin.toString() + ' y el valor máximo de ' + ValPagoMax.toString(),
+                    title: '¡El valor a pagar no cumple con las políticas!',
+                    text: 'Se introdujo el valor de ' + formatoCop(ValPagar) + ', recuerde que: \n' +
+                    'Valor mínimo = ' + formatoCop(ValPagoMin) + '\n' +
+                    'Valor máximo = ' + formatoCop(ValPagoMax) + '\n',
                     buttons: 'Aceptar',
                     dangerMode: true,
                 });
@@ -62,16 +67,16 @@ $('#inCuotas').change(
         var tipo = document.getElementById('inTipoAcuerdo');
         
         if(cuota == 1){
-            tipo.value = "CONTADO";
+            tipo.value = "ACUERDO A CONTADO";
         }else if(cuota > 1){
-            tipo.value = "CUOTAS";
+            tipo.value = "ACUERDO A CUOTAS";
         };
     });
 
 //añade function a botón para elegir cuotas
 document.getElementById('btn_cuotas').addEventListener('click', verCuota, false);
     function verCuota(){
-        var ValPagar = parseInt(document.getElementById('inValorAcuerdo').value);
+        var ValPagar = parseInt((document.getElementById('inValorAcuerdo').value).replace(/[.]/g,''));
         var url = '../views/muestra_cuotas.php?inValorAcuerdo=' + ValPagar;
 
         if(ValPagar > 0){
@@ -102,14 +107,14 @@ document.getElementById('limpiar').addEventListener('click', limpiar, false);
 //pregunta antes de enviar el formulario
 document.getElementById('frm_acuedos').addEventListener('submit', confirma, false);
     function confirma (evesub){
-        var ValPagar = parseInt(document.getElementById('inValorAcuerdo').value);
+        var ValPagar = parseInt((document.getElementById('inValorAcuerdo').value).replace(/[.]/g,''));
         var formulario = document.getElementById("frm_acuedos");
 
         evesub.preventDefault(); //cancela acción por defecto de el evento submit
         if(ValPagar != 0){
             swal({
                 title: "¿confirma guardar el acuedo?",
-                text: "Se generara el acuerdo de pago por un valor de " + ValPagar,
+                text: "Se generara el acuerdo de pago por un valor de " + formatoCop(ValPagar),
                 icon: "warning",
                 buttons: true,
             })
@@ -162,11 +167,11 @@ function limpiafrm(){
     sessionStorage.clear();
 }
 
-//formatea num a pesos
+//formatea numeros a pesos
 function formatoCop(valor){
-    const formatter = new Intl.NumberFormat('en-US', {
+    const formatter = new Intl.NumberFormat('es-CO', {
         style: 'currency',
-        currency: 'USD',
+        currency: 'COP',
         minimumFractionDigits: 0
     });
     return formatter.format(valor);  

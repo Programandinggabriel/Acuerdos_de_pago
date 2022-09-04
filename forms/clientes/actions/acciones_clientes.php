@@ -16,7 +16,7 @@
         case 'insertar':
             
             //validacion previa
-            $querySelect = 'SELECT numobligacion FROM clientes_deuda WHERE numobligacion =' . "'". $inNumobligClnt . "'";
+            $querySelect = 'SELECT numobligacion FROM infclient WHERE numobligacion =' . "'". $inNumobligClnt . "'";
             $resultado = mysqli_query($conexion, $querySelect);
 
             if(mysqli_num_rows($resultado) >= 1){
@@ -42,7 +42,7 @@
             //echo $datosCliente
 
             $queryInsert = "INSERT INTO 
-            clientes_deuda (numobligacion, idcliente, nombrecliente, edad, ciudadresidencia, numcelular, correocliente, saldocapital) 
+            infclient (numobligacion, idcliente, nombrecliente, edad, ciudadresidencia, numcelular, correocliente, saldocapital) 
             VALUES $datosCliente";
             
             $queryInsert = mysqli_query($conexion, $queryInsert);
@@ -61,12 +61,12 @@
             $datosCliente = "numobligacion='$inNumobligClnt', idcliente='$inCedulaClnt, nombrecliente='$inNomClnt', edad='$inEdadClnt', 
             ciudadresidencia='$inCiudadClnt', numcelular='$inNumCelClnt', correocliente='$inEmailClnt', saldocapital='$inSaldoCap'";
 
-            $queryUpdate = "UPDATE clientes_deuda SET ". $datosCliente ." WHERE numobligacion = " . "'" . $inNumobligClnt ."'";
+            $queryUpdate = "UPDATE infclient SET ". $datosCliente ." WHERE numobligacion = " . "'" . $inNumobligClnt ."'";
             echo $queryInsert;
             $actualizados = mysqli_query($conexion, $queryUpdate);
             break;
         case 'eliminar':
-            $queryDelete = "DELETE FROM clientes_deuda WHERE numobligacion = " . "'" . $inNumobligClnt ."'";
+            $queryDelete = "DELETE FROM infclient WHERE numobligacion = " . "'" . $inNumobligClnt ."'";
             $eliminado = mysqli_query($conexion, $queryDelete);
             break;
     } 
