@@ -60,18 +60,6 @@ $(document).ready( function(){
     document.getElementById('inFechPago').min = today;
 });
 
-//añade function a evento de input cuotas para TIPO
-document.getElementById('inCuotas').oninput = function tipo(){
-        var cuota = document.getElementById('inCuotas').value;
-        var tipo = document.getElementById('inTipoAcuerdo');
-        
-        if(cuota == 1){
-            tipo.value = "ACUERDO A CONTADO";
-        }else if(cuota > 1){
-            tipo.value = "ACUERDO A CUOTAS";
-        };
-    };
-
 //añade function a botón para elegir cuotas
 document.getElementById('btn_cuotas').addEventListener('click', verCuota, false);
     function verCuota(){
