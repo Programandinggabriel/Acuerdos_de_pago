@@ -40,3 +40,7 @@ function formatoCop(valor){
     });
     return formatter.format(valor);  
 };
+
+function tomaAlt(btnAlt){
+    var cuota = btnAlt.id;
+};

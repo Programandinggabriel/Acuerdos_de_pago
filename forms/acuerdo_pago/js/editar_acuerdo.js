@@ -1,5 +1,6 @@
 $('#inValorAcuerdo').mask("000.000.000.000.000", {reverse: true});
 $('input').attr("required", "true");
+window.addEventListener('load',cargDatFrm(),false);
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -12,7 +13,7 @@ document.getElementById('btn_cuotas').addEventListener('click', verCuota, false)
 
         if(ValPagar > 0){
             savDatFrm();
-            window.location.href=url;
+            window.open(url,'','width=1132,height=639,left=-1485,resizable=0');
         }else{
             swal({
                 title: "Error en valor",

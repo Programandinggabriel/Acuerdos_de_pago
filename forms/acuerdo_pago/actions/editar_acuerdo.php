@@ -24,10 +24,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>  
 
+    <script src='../js/funciones/funciones.js'></script>
+
     <title>Editar</title>
 </head>
 
-<section class="p-5 row justify-content-center">
+<section class="p-3 row justify-content-center">
     <h1 class=' text-center mb-5'>DATOS DE EL ACUERDO</h1>
     <form class='border border-success rounded w-90 p-3 text-center' method='POST' action="acciones_acuerdos.php" id='frm_acuedos'>
         <!--VARIABLE DE CASE == ACCION USUARIO-->
@@ -47,7 +49,7 @@
                 <label>NUMERO DE OBLIGACIÓN</label>
             </div>
             <div class="col-sm-3">
-                <input  class="form-control bg-light" type="number" value=<?php echo $info_Acuerdo[1]?> id="inNobligAcuerdo" name="inNobligAcuerdo" readonly required></input>
+                <input  class="form-control bg-light" type="number" value=<?php echo $info_Acuerdo[1]?> id="inNobligAcuerdo" name="inNobligAcuerdo" readonly></input>
             </div>  
         </div>
         
@@ -74,7 +76,7 @@
                 <label>VALOR ACORDADO</label>
             </div>
             <div class=col-sm-3>
-                <input class="form-control bg-light" type="text" value=<?php echo number_format($info_Acuerdo[5],0,'','.')?> id="inValorAcuerdo" name="inValorAcuerdo" required></input>
+                <input class="form-control bg-light" type="text" value=<?php echo number_format($info_Acuerdo[5],0,'','.')?> id="inValorAcuerdo" name="inValorAcuerdo"></input>
             </div>
             
             <div class='col-1'></div>
@@ -83,7 +85,7 @@
                 <label>CUOTAS DE EL ACUERDO</label>
             </div>
             <div class=col-sm-1>
-                <input  class="form-control bg-light" type="number" value=<?php echo $info_Acuerdo[6]?> name="inCuotas" id ="inCuotas" required readonly></input>
+                <input  class="form-control bg-light" type="number" value=<?php echo $info_Acuerdo[6]?> name="inCuotas" id ="inCuotas" readonly></input>
             </div>
             <div class=col-md-2>
                 <input  class="form-control bg-light" type="text" name="inTipoAcuerdo" id ="inTipoAcuerdo" readonly></input>
@@ -114,7 +116,7 @@
                 <label>FECHA DE PAGO (CUOTAS)</label>
             </div>
             <div class=col-sm-3>
-                <input class="form-control bg-light" type="date" value=<?php echo $info_Acuerdo[4] ?> name="inFechPago" id='inFechPago' required></input>
+                <input class="form-control bg-light" type="date" value=<?php echo $info_Acuerdo[4] ?> name="inFechPago" id='inFechPago'></input>
             </div>
         </div>
 
@@ -168,4 +170,10 @@
 <script src='../js/editar_acuerdo.js'></script>
 
 <?php  
+    if(isset($_GET['inCuotas'])){
+        echo"<script>"; 
+            echo "document.getElementById('inCuotas').value=" . $_GET['inCuotas'].";";
+            echo "$('#inCuotas').trigger('change');";
+        echo"</script>"; 
+    };
 ?>

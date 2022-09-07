@@ -10,16 +10,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    
 
+    <script src='../js/funciones/funciones.js'></script>
+
     <title>Nuevo acuerdo</title>
 </head>
-<section class="p-5 row justify-content-center">
-    <h1 class=' text-center mb-5'>DATOS DE EL ACUERDO</h1>
-    <form class='border border-success rounded w-90 p-3 text-center' method='POST' action="acciones_acuerdos.php" id='frm_acuedos'>
+<section class="p-2 row justify-content-center">
+    <h1 class=' text-center mb-1'>DATOS DE EL ACUERDO</h1>
+    <form class='w-100 p-3 text-center' method='POST' action="acciones_acuerdos.php" id='frm_acuedos'>
         <!--VARIABLE DE CASE == ACCION USUARIO-->
         <input type="hidden" name="accion" value='insertar'>   
         
-        <div class='row mt-5'>
-            <div class='col-md-2 col-form-label-md'>
+        <div class='row mt-3'>
+            <div class='col-md-2 col-form-label-sm'>
                 <label>NUMERO IDENTIFICACIÓN (CLIENTE)</label>
             </div>
             <div class='col-sm-3'>
@@ -41,7 +43,7 @@
             </div> 
         </div>
         
-        <div class='row mt-5'>
+        <div class='row mt-3'>
             <div class='col-md-2 col-form-label-md'>
                 <label>VALOR CAPITAL</label>
             </div>
@@ -59,7 +61,7 @@
             </div>
         </div>
 
-        <div class='row mt-5'>
+        <div class='row mt-3'>
             <div class='col-md-2 col-form-label-md'>
                 <label>VALOR ACORDADO</label>
             </div>
@@ -90,7 +92,7 @@
             </div>
         </div>
         
-        <div class='row mt-5'>
+        <div class='row mt-3'>
             <div class='col-md-2 col-form-label-md'>
                 <label>FECHA ACUERDO</label>
             </div>
@@ -108,7 +110,7 @@
             </div>
         </div>
 
-        <div class='row mt-5'>
+        <div class='row mt-3'>
             <div class='col-md-2'>
                 <label>COMENTARIOS</label>
             </div>
@@ -117,7 +119,8 @@
                     class='form-control bg-light' 
                     rows='8' 
                     placeholder='Ejemplo: En el mes de (...), el cliente pagara 2 cuotas para asi cumplir con el acuerdo estipulado, antes del periodo de tiempo acordado...' 
-                    id='inComments'>
+                    id='inComments'
+                    name='inComments'>
                 </textarea>
             </div>
         </div>

@@ -61,8 +61,7 @@ $(document).ready( function(){
 });
 
 //añade function a evento de input cuotas para TIPO
-$('#inCuotas').change(
-    function tipo(){
+document.getElementById('inCuotas').oninput = function tipo(){
         var cuota = document.getElementById('inCuotas').value;
         var tipo = document.getElementById('inTipoAcuerdo');
         
@@ -71,7 +70,7 @@ $('#inCuotas').change(
         }else if(cuota > 1){
             tipo.value = "ACUERDO A CUOTAS";
         };
-    });
+    };
 
 //añade function a botón para elegir cuotas
 document.getElementById('btn_cuotas').addEventListener('click', verCuota, false);
@@ -81,7 +80,7 @@ document.getElementById('btn_cuotas').addEventListener('click', verCuota, false)
 
         if(ValPagar > 0){
             savDatFrm();
-            window.location.href=url;
+            window.open(url,'','width=1132,height=639,left=-1485,resizable=0');
         }else{
             swal({
                 title: "Error en valor",
@@ -133,46 +132,3 @@ document.getElementById('frm_acuedos').addEventListener('submit', confirma, fals
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------*/
-function savDatFrm(){
-    with(sessionStorage){
-        setItem('inidCliente',$('#inidCliente').val());
-        setItem('inNobligAcuerdo',$('#inNobligAcuerdo').val());
-        setItem('inValCapital',$('#inValCapital').val());
-        setItem('inValTotal',$('#inValTotal').val());
-        setItem('inValorAcuerdo',$('#inValorAcuerdo').val());
-        setItem('inFechPago',$('#inFechPago').val());
-        setItem('inCuotas',$('#inCuotas').val());
-        setItem('inTipoAcuerdo',$('#inTipoAcuerdo').val());
-        setItem('inComments',$('#inComments').val());
-    };
-};
-
-function cargDatFrm(){
-    with(sessionStorage){
-        $('#inidCliente').val(getItem('inidCliente'));
-        $('#inNobligAcuerdo').val(getItem('inNobligAcuerdo'));
-        $('#inValCapital').val(getItem('inValCapital'));
-        $('#inValTotal').val(getItem('inValTotal'));
-        $('#inValorAcuerdo').val(getItem('inValorAcuerdo'));
-        $('#inFechPago').val(getItem('inFechPago'));
-        $('#inCuotas').val(getItem('inCuotas'));
-        $('#inTipoAcuerdo').val(getItem('inTipoAcuerdo'));
-        $('#inComments').val(getItem('inComments'));
-    };
-};
-
-function limpiafrm(){
-    $("input[id!=inFechAcuerdo]").val("");
-    $("textarea").val("");
-    sessionStorage.clear();
-}
-
-//formatea numeros a pesos
-function formatoCop(valor){
-    const formatter = new Intl.NumberFormat('es-CO', {
-        style: 'currency',
-        currency: 'COP',
-        minimumFractionDigits: 0
-    });
-    return formatter.format(valor);  
-};

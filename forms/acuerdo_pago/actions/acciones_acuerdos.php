@@ -3,6 +3,9 @@
     //incluye script de alerta swal
     echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
 
+    //clave primaria 
+    $idacuerdo = creaidacu();
+
     $inNobligAcuerdo = $_POST['inNobligAcuerdo'];
     $inidCliente = $_POST['inidCliente'];
     $inFechAcuerdo = $_POST['inFechAcuerdo'];
@@ -17,8 +20,8 @@
         case 'insertar':
             //print_r($_POST);
 
-            $datosAcuerdo = "('$inNobligAcuerdo', '$inidCliente', '$inFechAcuerdo', '$inFechPago', '$inValorAcuerdo', '$inCuotas', '$inComments')";
-            $queryInsert = "INSERT INTO acuerdos (numobligacion, idcliente, fechaacuerdo, fechapago, valor, cuotas, comentarios) VALUES " . $datosAcuerdo ;
+            $datosAcuerdo = "('$idacuerdo','$inNobligAcuerdo', '$inidCliente', '$inFechAcuerdo', '$inFechPago', '$inValorAcuerdo', '$inCuotas', '$inComments')";
+            $queryInsert = "INSERT INTO acuerdos (idacuerdo, numobligacion, idcliente, fechaacuerdo, fechapago, valor, cuotas, comentarios) VALUES " . $datosAcuerdo ;
 
             $queryInsert = mysqli_query($conexion, $queryInsert);
 
@@ -52,26 +55,49 @@
             $queryUpdate = mysqli_query($conexion, $queryUpdate);
             
             if($queryUpdate){
-                echo 'actualizado';
                 header("location:../views/muestra_acuerdos.php");
             };
 
         break;
         
         case 'eliminar':
-            
+
             //primary key
             $idAcuerdo = $_POST['idAcuerdo'];
 
-           $queryDelete  = "DELETE FROM acuerdos WHERE idacuerdo = '$idAcuerdo'";
-           echo $queryDelete;
-           $queryDelete = mysqli_query($conexion, $queryDelete);
-            
-           if($queryDelete){
+            $queryPrevDel = "INSERT INTO acuerddel (SELECT * FROM acuerdos WHERE idacuerdo = '".$idAcuerdo."')";
+            $queryPrevDel = mysqli_query($conexion, $queryPrevDel);
+
+            $queryDelete  = "DELETE FROM acuerdos WHERE idacuerdo = '$idAcuerdo'";
+            $queryDelete = mysqli_query($conexion, $queryDelete);
+
+            if($queryDelete){
                 header("location:../views/muestra_acuerdos.php");
             };
 
         break;
-    }
+    };
 
+/*--------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------*/
+//functions
+function creaidacu(){
+    include('../../../conexion/con_database.php');
+    $idExist = true;
+
+    while($idExist == true){
+        $id = 'ACU';
+        $numAleat = random_int(0000, 9999);
+        $id = $id . $numAleat;
+
+        $querySelect = 'SELECT idacuerdo FROM acuerdos WHERE idacuerdo ='."'".$id."'";
+        $querySelect = mysqli_query($conexion, $querySelect);
+        $querySelect = $querySelect->num_rows;
+
+        if($querySelect == 0){
+            $idExist = false;
+        };
+    };
+    return $id ;
+};
 ?>
