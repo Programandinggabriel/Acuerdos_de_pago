@@ -1,4 +1,4 @@
-//funcion a evento de boton 'addfil'
+//funcion a evento click de boton 'addfil'
 $("#addfil").click(()=>{
         var ulFila = $('#tbCuotas tr:last');
         var CuotaAdd = parseInt(ulFila.find('td:eq(2)').text()) + 1;
@@ -22,11 +22,11 @@ $("#addfil").click(()=>{
         $('#tbCuotas>tbody').append(fila);        
     });
 
-//añade function a evento de boton retroceso para enviar a el index
+//function a evento click boton retroceso (envia index)
 document.getElementById('retroceso').addEventListener('click', retroceder, false);
-function retroceder(){
-    window.history.back();
-};
+    function retroceder(){
+        window.history.back();
+    };
 
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------
@@ -40,8 +40,7 @@ function formatoCop(valor){
     });
     return formatter.format(valor);  
 };
-//funcion con evento button
-
+//funcion al evento click boton tomar alt
 function tomaAlt(btnAlt){
     var cuota = parseInt(btnAlt.id);
     var winPadre = window.opener;
@@ -54,6 +53,4 @@ function tomaAlt(btnAlt){
     }else if(cuota > 1){
         tipo.value = "ACUERDO A CUOTAS";
     };
-
-
 };
