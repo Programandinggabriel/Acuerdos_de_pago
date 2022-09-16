@@ -9,7 +9,21 @@
     */
 
     //se usa para cualquier ACCION DE CLIENTES !!!!!!
-    $inNumobligClnt = $_POST['inNumobligClnt'];
+    try{
+        $inNumobligClnt = $_POST['inNumobligClnt'];
+        
+        $inCedulaClnt = $_POST['inCedulaClnt'];
+        $inNomClnt = $_POST['inNomClnt'];
+        $inEdadClnt = $_POST['inEdadClnt'];
+        $inCiudadClnt = $_POST['inCiudadClnt'];
+        $inNumCelClnt = $_POST['inNumCelClnt']; 
+        $inEmailClnt = $_POST['inEmailClnt'];
+        $inSaldoCap = $_POST['inSaldoCap'];
+        $inSaldoTot = $_POST['inSaldoTot'];
+    }catch(Exception $objErr){
+
+    };
+    
     //!!!!!!
 
     switch($_POST['accion']){
@@ -26,38 +40,21 @@
                     window.history.back();
                 </script>";
                 exit();
-            }
-            //
-            $inCedulaClnt = $_POST['inCedulaClnt'];
-            $inNomClnt = $_POST['inNomClnt'];
-            $inEdadClnt = $_POST['inEdadClnt'];
-            $inCiudadClnt = $_POST['inCiudadClnt'];
-            $inNumCelClnt = $_POST['inNumCelClnt']; 
-            $inEmailClnt = $_POST['inEmailClnt'];
-            $inSaldoCap = $_POST['inSaldoCap'];
+            };
             
             $datosCliente = "('$inNumobligClnt', '$inCedulaClnt','$inNomClnt','$inEdadClnt', '$inCiudadClnt', 
-            '$inNumCelClnt','$inEmailClnt','$inSaldoCap')";
-            
-            //echo $datosCliente
+            '$inNumCelClnt','$inEmailClnt','$inSaldoCap','$inSaldoTot')";
 
             $queryInsert = "INSERT INTO 
-            infclient (numobligacion, idcliente, nombrecliente, edad, ciudadresidencia, numcelular, correocliente, saldocapital) 
+            infclient (numobligacion, idcliente, nombrecliente, edad, ciudadresidencia, numcelular, correocliente, saldocapital, saldototal) 
             VALUES $datosCliente";
-            
+            echo $queryInsert ;
             $queryInsert = mysqli_query($conexion, $queryInsert);
+            
             break;
         
         case 'editar':
-            $inCedulaClnt = $_POST['inCedulaClnt'];
-            $inNomClnt = $_POST['inNomClnt'];
-            $inEdadClnt = $_POST['inEdadClnt'];
-            $inCiudadClnt = $_POST['inCiudadClnt'];
-            $inNumCelClnt = $_POST['inNumCelClnt']; 
-            $inEmailClnt = $_POST['inEmailClnt'];
-            $inSaldoCap = $_POST['inSaldoCap'];
 
-            //"idcliente='$inCedulaClnt' = la llave primaria no se envia 
             $datosCliente = "numobligacion='$inNumobligClnt', idcliente='$inCedulaClnt, nombrecliente='$inNomClnt', edad='$inEdadClnt', 
             ciudadresidencia='$inCiudadClnt', numcelular='$inNumCelClnt', correocliente='$inEmailClnt', saldocapital='$inSaldoCap'";
 
@@ -70,5 +67,5 @@
             $eliminado = mysqli_query($conexion, $queryDelete);
             break;
     } 
-        header('location: ../views/muestra_cliente.php');
+        //header('location: ../views/muestra_cliente.php');
     ?> 

@@ -2,75 +2,88 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet"></link>
         <script src="../../../js/bootstrap.js"></script>
-        <title> INSERTAR </title>
+        <title> Insertar </title>
     </head>
-<body class="bg-light p-5 row justify-content-center">
-<form class="border border-success rounded p-5 w-75" method="POST" action="acciones_clientes.php" > 
-    <h1 class='text-center'>DATOS DEL CLIENTE</h1>    
-    <!--VARIABLE DE CASE == ACCION USUARIO-->
-        <input type="hidden" name="accion" value= "insertar"></input>
+<section class="p-2 row justify-content-center">
+    <h1 class='text-center' style='margin-top: 100px;'>DATOS DE EL CLIENTE</h1>  
+    <form class='w-100 p-3 text-center' method="POST" action="acciones_clientes.php"> 
+        <!--VARIABLE DE CASE == ACCION USUARIO-->
+        <input type="hidden" name="accion" value="insertar"></input>
 
-        <div class="text-center">
-            <div class="form-group row mt-3 justify-content-center">
-                <label class="col-sm-3 col-form-label-lg">NUMERO DE OBLIGACIÓN</label>
-                <div class=col-sm-4>
-                    <input class="form-control bg-light" type="number" min="1" step="any" required name="inNumobligClnt"></input>
-                </div>
-            </div>           
-
-            <div class="form-group row mt-3 justify-content-center">
-                <label class="col-sm-3 col-form-label-lg">NÚMERO DE IDENTIFICACIÓN</label>
-                <div class=col-sm-4>
-                    <input class="form-control bg-light" type="number" min="1" step="any" required name="inCedulaClnt"></input>
-                </div>
+        <div class='row mt-5'>
+            <div class='col-md-2 col-form-label'>
+                <label>NUMERO DE OBLIGACIÓN</label>
             </div>
-            
-            <div class="form-group row mt-3 justify-content-center">
-                <label class="col-sm-3 col-form-label-lg" >NOMBRE COMPLETO </label>
-                <div class=col-sm-4>
-                    <input class="form-control bg-light" type="text" required  name="inNomClnt"></input>
-                </div>
-            </div>
-            
-            <div class="form-group row mt-3 justify-content-center">
-                <label class="col-sm-3 col-form-label-lg" > EDAD </label>
-                <div class=col-sm-4>
-                    <input class="form-control bg-light" type="number" min="18" step="any" name="inEdadClnt"></input>
-                </div>
+            <div class='col-md-3'>
+                <input class="form-control bg-light" type="number" min="1" step="any" required name="inNumobligClnt"></input>
             </div>
 
-            <div class="form-group row mt-3 justify-content-center">
-                <label class="col-sm-3 col-form-label-lg">CIUDAD</label>
-                <div class=col-sm-4>
-                    <input class="form-control bg-light" type="text" name="inCiudadClnt"></input>
-                </div>
-            </div> 
-
-            <div class="form-group row mt-3 justify-content-center">
-                <label class="col-sm-3 col-form-label-lg">NUMERO DE CELULAR</label>
-                <div class=col-sm-4>
-                    <input class="form-control bg-light" type="number" min="1" step="any" name="inNumCelClnt"></input>
-                </div>
+            <div class='col-md-2 col-form-label'>
+                <label>NÚMERO DE IDENTIFICACIÓN</label>
             </div>
-
-            <div class="form-group row mt-3 justify-content-center">
-                <label class="col-sm-3 col-form-label-lg">CORREO ELECTRÓNICO</label>
-                <div class=col-sm-4>
-                    <input  class="form-control bg-light" type="email" name="inEmailClnt"></input>
-                </div>
-            </div>
-
-            <div class="form-groip row mt-3 justify-content-center">
-                <label class="col-sm-3 col-form-label-lg">SALDO CAPITAL</label>
-                <div class=col-sm-4>
-                    <input class="form-control bg-light" type="number" min="1" step="any" required name="inSaldoCap"></input>
-                </div>
+            <div class='col-md-3'>
+                <input class="form-control bg-light" type="number" min="1" step="any" required name="inCedulaClnt"></input>
             </div>
         </div>
-    
-        <div class='container border border-success rounded p-2 mt-5 w-75'>
+
+        <div class='row mt-5'>
+            <div class='col-md-2 col-form-label'>
+                <label>NOMBRE COMPLETO</label>
+            </div>
+            <div class='col-md-3'>
+                <input class="form-control bg-light" type="text" required  name="inNomClnt"></input>
+            </div>
+
+            <div class='col-md-2 col-form-label'>
+                <label>EDAD</label>
+            </div>
+            <div class='col-md-3'>
+                <input class="form-control bg-light" type="number" min="18" step="any" name="inEdadClnt"></input>
+            </div>
+        </div>
+
+        <div class='row mt-5'>
+            <div class='col-md-2 col-form-label'>
+                <label>CIUDAD</label>
+            </div>
+            <div class='col-md-3'>
+                <input class="form-control bg-light" type="text" name="inCiudadClnt"></input>
+            </div>
+
+            <div class='col-md-2 col-form-label'>
+                <label>NUMERO DE CELULAR</label>
+            </div>
+            <div class='col-md-3'>
+                <input class="form-control bg-light" type="number" maxlength="10" step="any" name="inNumCelClnt"></input>
+            </div>
+        </div>
+
+        <div class='row mt-5'>
+            <div class='col-md-2 col-form-label'>
+                <label>CORREO ELECTRÓNICO</label>
+            </div>
+            <div class='col-md-3'>
+                <input  class="form-control bg-light" type="email" name="inEmailClnt"></input>
+            </div>
+
+            <div class='col-md-1 col-form-label'>
+                <label>SALDO CAPITAL</label>
+            </div>
+            <div class='col-md-2'>
+                <input class="form-control bg-light" type="number" min="1" step="any" required name="inSaldoCap"></input>
+            </div>
+
+            <div class='col-md-1 col-form-label'>
+                <label>SALDO TOTAL</label>
+            </div>
+            <div class='col-md-2'>
+                <input class="form-control bg-light" type="number" min="1" step="any" required name="inSaldoTot"></input>
+            </div>
+        </div>
+
+        <div class='container border border-success rounded p-2 w-75' style='margin-top: 100px;'>
             <div class="row">
             <div class="col-12 d-flex justify-content-center text-center">
                 
@@ -103,7 +116,6 @@
             </div>
         </div>
     </form>
-        
-    <script src='../js/frm_clientes.js'></script>
-</body>
+<script src='../js/frm_clientes.js'></script>
+</section>
 </html>

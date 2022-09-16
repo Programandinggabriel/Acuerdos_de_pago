@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0"> <!--responsive-->
     <link href="../../../css/bootstrap.min.css" rel="stylesheet">
     <script src="../../../js/bootstrap.js"></script>
+    
     <title>Clientes Actuales</title>
 </head>
 <body class='bg-light'>
 
 <div class='p-2'>
-    <div class='border border-success rounded'>
+    <div class='border border-success rounded text-center' style='height: 500px; overflow: auto;'>
         <div class="p-3">
             <!--tabla-->
             <?php

@@ -1,4 +1,4 @@
-<?php
+ <?php
     include('../../../conexion/con_database.php');
 
     $idasesor = $_GET['idasesor'];
@@ -17,61 +17,69 @@
     <script src="../../../js/bootstrap.js"></script>
     <title>Editar</title>
 </head>
-<body class="bg-light p-2 row justify-content-center"> 
-    <form class="border border-success rounded w-75 p-3" method="POST" action="acciones_asesor.php">
-    <h1 class='text-center'>DATOS DEL ASESOR</h1>
-        <!--VARIABLE DE CASE == ACCION USUARIO-->
+<section class="p-2 row justify-content-center">
+<form class='w-100 p-3 text-center' method="POST" action="acciones_asesor.php">
+    <h1 class='text-center' style='margin-top: 100px;'>DATOS DEL ASESOR</h1>
+    <!--VARIABLE DE CASE == ACCION USUARIO-->
+    <input type="hidden" name="accion" value="editar"></input>
         
-        <input type="hidden" name="accion" value="editar"></input>
-        <div class="form-group row mt-3 justify-content-center">
-            <label class="col-sm-3 col-form-label-lg">N° DOCUMENTO</label>
-            <div class="col-sm-4">
+        <div class='row mt-5'>
+            <div class='col-md-2 col-form-label'>
+                <label>N° DOCUMENTO</label>
+            </div>
+            <div class='col-md-3'>
                 <input type="text" class="form-control bg-light" name="inNdocAsesor" readonly value="<?php echo $resultado[0]?>"></input>
             </div>    
-        </div>
-            
-        <div class="form-group row mt-3 justify-content-center">
-            <label class="col-sm-3 col-form-label-lg">NOMBRES Y APELLIDOS COMPLETOS</label>
-            <div class="col-sm-4">
+
+            <div class='col-md-2 col-form-label'>
+                <label>NOMBRES Y APELLIDOS COMPLETOS</label>
+            </div>
+            <div class='col-md-3'>
                 <input type="text" class="form-control bg-light" name="inNombreAsesor" value="<?php echo $resultado[1]?>"></input>
             </div>
         </div>
-            
-        <div class="form-group row mt-3 justify-content-center">
-            <label class="col-sm-3 col-form-label-lg">FECHA DE NACIMIENTO</label>
-            <div class=col-sm-4>
+        
+        <div class='row mt-5'>
+            <div class='col-md-2 col-form-label'>
+                <label>FECHA DE NACIMIENTO</label>
+            </div>
+            <div class='col-md-3'>
                 <input type="date" class="form-control bg-light" name="inFechNacAsesor" value="<?php echo $resultado[2]?>"></input>
             </div>
-        </div>
 
-        <div class="form-group row mt-3 justify-content-center">
-            <label class="col-sm-3 col-form-label-lg"> EDAD </label>
-            <div class="col-sm-4">
+            <div class='col-md-2 col-form-label'>
+                <label>EDAD</label>
+            </div>
+            <div class='col-md-1'>
                 <input type="number" class="form-control bg-light" name="inEdadAsesor" value="<?php echo $resultado[3]?>"></input>
             </div>
-        </div>
 
-        <div class="form-group row mt-3 justify-content-center">
-            <label class="col-sm-3 col-form-label-lg">CORREO EMPRESARIAL</label>
-            <div class=col-sm-4>
-                <input type="email" class="form-control bg-light" name="inCorreoAsesor" value="<?php echo $resultado[4]?>"></input>
-        </div>
-
-        <div class="form-group row mt-3 justify-content-center">
-            <label class="col-sm-3 col-form-label-lg">CORREO EMPRESARIAL</label>
-            <div class=col-sm-4>
-            <input type="address" class="form-control bg-light" name="inViviendaAsesor" value="<?php echo $resultado[5]?>"></input>
-        </div>
-        
-        <div class="form-group row mt-3 justify-content-center">
-            <label class="col-sm-3 col-form-label-lg">ESTRÁTO SOCIAL</label>
-            <div class="col-sm-4">
+            <div class='col-md-1 col-form-label'>
+                <label>ESTRÁTO SOCIAL</label>
+            </div>
+            <div class='col-md-1'>
                 <input type="number" class="form-control bg-light" max="6" min="1" name="inEstratoAsesor" value="<?php echo $resultado[6]?>"></input>
             </div>
-        </div>            
-        
+        </div>
 
-        <div class='container border border-success rounded p-2 mt-5 w-75'><!--style='margin-left: 70px;-->
+        <div class='row mt-5'>
+            <div class='col-md-2 col-form-label'>
+                <label>CORREO EMPRESARIAL</label>
+            </div>
+            <div class='col-md-3'>
+                <input type="email" class="form-control bg-light" name="inCorreoAsesor" value="<?php echo $resultado[4]?>"></input>
+            </div>
+
+            <div class='col-md-2 col-form-label'>
+                <label>CORREO EMPRESARIAL</label>
+            </div>
+            <div class='col-md-3'>
+                <input type="address" class="form-control bg-light" name="inViviendaAsesor" value="<?php echo $resultado[5]?>"></input>
+            </div>
+        </div>
+
+
+        <div class='container border border-success rounded p-2 w-75' style='margin-top: 100px;'>
             <div class="row">
                 <div class="col-12 d-flex justify-content-center text-center">
                     <div class="col-3">
@@ -102,6 +110,7 @@
                 </div>
             </div>
     </form>
+</section>
     <script src='../js/editar_asesor.js'></script>
 <?php  
 

@@ -53,4 +53,6 @@ function tomaAlt(btnAlt){
     }else if(cuota > 1){
         tipo.value = "ACUERDO A CUOTAS";
     };
+
+    window.close();
 };

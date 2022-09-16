@@ -68,7 +68,7 @@ document.getElementById('btn_cuotas').addEventListener('click', verCuota, false)
 
         if(ValPagar > 0){
             savDatFrm();
-            window.open(url,'','width=1132,height=639,left=-1485,resizable=0');
+            window.open(url,'','width=762,height=639,left=-1485,resizable=0');
         }else{
             swal({
                 title: "Error en valor",
@@ -100,7 +100,7 @@ document.getElementById('frm_acuedos').addEventListener('submit', confirma, fals
         evesub.preventDefault(); //cancela acción por defecto de el evento submit
         if(ValPagar != 0){
             swal({
-                title: "¿confirma guardar el acuedo?",
+                title: "¿confirma guardar el acuerdo?",
                 text: "Se generara el acuerdo de pago por un valor de " + formatoCop(ValPagar),
                 icon: "warning",
                 buttons: true,

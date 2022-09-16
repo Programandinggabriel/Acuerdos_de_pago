@@ -15,16 +15,16 @@
     <title>Nuevo acuerdo</title>
 </head>
 <section class="p-2 row justify-content-center">
-    <h1 class=' text-center mb-1'>DATOS DE EL ACUERDO</h1>
+    <h1 class='text-center' style='padding-top: 150px;'>DATOS DE EL ACUERDO</h1> 
     <form class='w-100 p-3 text-center' method='POST' action="acciones_acuerdos.php" id='frm_acuedos'>
         <!--VARIABLE DE CASE == ACCION USUARIO-->
         <input type="hidden" name="accion" value='insertar'>   
         
-        <div class='row mt-3'>
+        <div class='row mt-4'>
             <div class='col-md-2 col-form-label-sm'>
                 <label>NUMERO IDENTIFICACIÓN (CLIENTE)</label>
             </div>
-            <div class='col-sm-3'>
+            <div class='col-md-3'>
                 <input class="form-control bg-light" type="number" min="1" step="any" placeholder='!ingrese numero de obligación¡' name="inidCliente" id ="inidCliente" ></input>
             </div>
             <div class="col-sm-1">
@@ -38,16 +38,16 @@
             <div class='col-md-2 col-form-label-md'>
                 <label>NUMERO DE OBLIGACIÓN</label>
             </div>
-            <div class="col-sm-3">
+            <div class="col-md-3">
                 <input class="form-control bg-light" type="number" step="any" id="inNobligAcuerdo" name="inNobligAcuerdo" readonly ></input>
             </div> 
         </div>
         
-        <div class='row mt-3'>
+        <div class='row mt-4'>
             <div class='col-md-2 col-form-label-md'>
                 <label>VALOR CAPITAL</label>
             </div>
-            <div class=col-sm-3>
+            <div class=col-md-3>
                 <input class="form-control bg-light" type="text" id="inValCapital" name="inValCapital" readonly ></input>
             </div>
             
@@ -56,16 +56,16 @@
             <div class='col-md-2 col-form-label-md'>
                 <label>VALOR TOTAL</label>
             </div>
-            <div class=col-sm-3>
+            <div class=col-md-3>
                 <input class="form-control bg-light" type="text" id="inValTotal" name="inValTotal" readonly ></input>
             </div>
         </div>
 
-        <div class='row mt-3'>
+        <div class='row mt-4'>
             <div class='col-md-2 col-form-label-md'>
                 <label>VALOR ACORDADO</label>
             </div>
-            <div class=col-sm-3>
+            <div class=col-md-3>
                 <input class="form-control bg-light" type="text" id="inValorAcuerdo" name="inValorAcuerdo" ></input>
             </div>
             
@@ -92,11 +92,11 @@
             </div>
         </div>
         
-        <div class='row mt-3'>
+        <div class='row mt-4'>
             <div class='col-md-2 col-form-label-md'>
                 <label>FECHA ACUERDO</label>
             </div>
-            <div class=col-sm-3>
+            <div class=col-md-3>
                 <input class="form-control bg-light" type="date"  name="inFechAcuerdo" id='inFechAcuerdo' readonly></input> 
             </div>
             
@@ -105,12 +105,12 @@
             <div class='col-md-2 col-form-label-md'>
                 <label>FECHA DE PAGO (CUOTAS)</label>
             </div>
-            <div class=col-sm-3>
+            <div class=col-md-3>
                 <input class="form-control bg-light" type="date" name="inFechPago" id='inFechPago' ></input>
             </div>
         </div>
 
-        <div class='row mt-3'>
+        <div class='row mt-4'>
             <div class='col-md-2'>
                 <label>COMENTARIOS</label>
             </div>
